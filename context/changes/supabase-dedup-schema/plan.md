@@ -198,11 +198,11 @@ Pierwsza migracja projektu. Katalog `supabase/migrations/` tworzy się automatyc
 
 #### Automated
 
-- [x] 2.1 `src/types/supabase.ts` istnieje i jest niepusty
-- [x] 2.2 `npm run lint` przechodzi
-- [x] 2.3 `npm run build` przechodzi
+- [x] 2.1 `src/types/supabase.ts` istnieje i jest niepusty — e8d26d0
+- [x] 2.2 `npm run lint` przechodzi — e8d26d0
+- [x] 2.3 `npm run build` przechodzi — e8d26d0
 
 #### Manual
 
-- [x] 2.4 `src/types/supabase.ts` zawiera typy dla `articles_seen` z polami: id, source_url, article_url, seen_at
-- [x] 2.5 Typ `Insert` dla `articles_seen` ma `id` i `seen_at` jako opcjonalne
+- [x] 2.4 `src/types/supabase.ts` zawiera typy dla `articles_seen` z polami: id, source_url, article_url, seen_at — e8d26d0
+- [x] 2.5 Typ `Insert` dla `articles_seen` ma `id` i `seen_at` jako opcjonalne — e8d26d0

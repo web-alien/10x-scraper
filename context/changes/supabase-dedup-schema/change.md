@@ -1,7 +1,7 @@
 ---
 change_id: supabase-dedup-schema
 title: Supabase dedup schema
-status: implementing
+status: implemented
 created: 2026-05-26
 updated: 2026-05-26
 archived_at: null
