@@ -14,16 +14,17 @@
       "Bash(git stash *)",
       "Read",
       "Edit",
-      "Write"
+      "Write",
+      "Bash(powershell.exe -Command \"Test-Path 'C:\\\\Users\\\\tjane\\\\AppData\\\\Roaming\\\\GitHub CLI\\\\hosts.yml'; if \\(Test-Path 'C:\\\\Users\\\\tjane\\\\AppData\\\\Roaming\\\\GitHub CLI\\\\hosts.yml'\\) { Get-Content 'C:\\\\Users\\\\tjane\\\\AppData\\\\Roaming\\\\GitHub CLI\\\\hosts.yml' }\")"
+    ],
+    "deny": [
+      "Bash(rm -rf *)"
     ],
     "ask": [
       "Bash(curl *)",
       "Bash(wget *)",
       "Bash(git push *)",
       "Bash(git push)"
-    ],
-    "deny": [
-      "Bash(rm -rf *)"
     ]
   }
 }
