@@ -184,25 +184,25 @@ Pierwsza migracja projektu. Katalog `supabase/migrations/` tworzy się automatyc
 
 #### Automated
 
-- [x] 1.1 `.supabase/` directory istnieje (projekt zlinkowany)
-- [x] 1.2 Plik `supabase/migrations/20260526000000_create_articles_seen.sql` istnieje
-- [x] 1.3 `npx supabase db push` kończy się kodem 0
+- [x] 1.1 `.supabase/` directory istnieje (projekt zlinkowany) — 453432f
+- [x] 1.2 Plik `supabase/migrations/20260526000000_create_articles_seen.sql` istnieje — 453432f
+- [x] 1.3 `npx supabase db push` kończy się kodem 0 — 453432f
 
 #### Manual
 
-- [x] 1.4 Tabela `articles_seen` widoczna w Supabase z kolumnami: id, source_url, article_url, seen_at
-- [x] 1.5 RLS włączone na tabeli
-- [x] 1.6 Policy "authenticated can select" widoczna w zakładce Policies
+- [x] 1.4 Tabela `articles_seen` widoczna w Supabase z kolumnami: id, source_url, article_url, seen_at — 453432f
+- [x] 1.5 RLS włączone na tabeli — 453432f
+- [x] 1.6 Policy "authenticated can select" widoczna w zakładce Policies — 453432f
 
 ### Phase 2: Generate TypeScript Types
 
 #### Automated
 
-- [ ] 2.1 `src/types/supabase.ts` istnieje i jest niepusty
-- [ ] 2.2 `npm run lint` przechodzi
-- [ ] 2.3 `npm run build` przechodzi
+- [x] 2.1 `src/types/supabase.ts` istnieje i jest niepusty
+- [x] 2.2 `npm run lint` przechodzi
+- [x] 2.3 `npm run build` przechodzi
 
 #### Manual
 
-- [ ] 2.4 `src/types/supabase.ts` zawiera typy dla `articles_seen` z polami: id, source_url, article_url, seen_at
-- [ ] 2.5 Typ `Insert` dla `articles_seen` ma `id` i `seen_at` jako opcjonalne
+- [x] 2.4 `src/types/supabase.ts` zawiera typy dla `articles_seen` z polami: id, source_url, article_url, seen_at
+- [x] 2.5 Typ `Insert` dla `articles_seen` ma `id` i `seen_at` jako opcjonalne
