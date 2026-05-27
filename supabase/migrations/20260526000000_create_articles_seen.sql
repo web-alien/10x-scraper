@@ -8,7 +8,8 @@ CREATE TABLE articles_seen (
 
 ALTER TABLE articles_seen ENABLE ROW LEVEL SECURITY;
 
--- authenticated może SELECT (przyszłe zapytania admina); anon zablokowany domyślnie
--- service_role pomija RLS automatycznie — nie wymaga jawnej polityki
+-- RLS policy design:
+--   INSERT/UPDATE/DELETE: service_role only (bypasses RLS automatically — no explicit policy needed)
+--   SELECT:               authenticated (future admin queries); anon blocked by default
 CREATE POLICY "authenticated can select"
   ON articles_seen FOR SELECT TO authenticated USING (true);

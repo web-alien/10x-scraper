@@ -21,6 +21,9 @@ pnpm-debug.log*
 .dev.vars
 .wrangler/
 
+# supabase local CLI state (run `supabase link --project-ref hfiasswaduellpweeloc` to restore)
+.supabase/
+
 # macOS-specific files
 .DS_Store
 
