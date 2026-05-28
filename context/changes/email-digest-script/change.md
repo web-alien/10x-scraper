@@ -1,7 +1,7 @@
 ---
 change_id: email-digest-script
 title: Email digest script
-status: implemented
+status: impl_reviewed
 created: 2026-05-28
 updated: 2026-05-28
 archived_at: null
