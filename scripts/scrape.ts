@@ -62,7 +62,6 @@ for (const source of sources) {
     const $ = load(html);
     const linkElements = $(source.selectors.articleLink);
 
-    // title/lead collected here for future S-02 use; only source_url/article_url go to DB now
     const articles: { source_url: string; article_url: string; title: string; lead: string }[] = [];
 
     linkElements.each((index, el) => {
@@ -91,7 +90,7 @@ for (const source of sources) {
       continue;
     }
 
-    const dbRows = articles.map(({ source_url, article_url }) => ({ source_url, article_url }));
+    const dbRows = articles.map(({ source_url, article_url, title, lead }) => ({ source_url, article_url, title, lead }));
 
     const { data, error } = await supabase
       .from("articles_seen")
