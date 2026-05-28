@@ -10,6 +10,7 @@ const SourceConfigSchema = z.array(
     url: z.url(),
     selectors: z.object({
       articleLink: z.string(),
+      title: z.string().optional(),
       lead: z.string().optional(),
     }),
   }),
@@ -65,7 +66,12 @@ for (const source of sources) {
     const articles: { source_url: string; article_url: string; title: string; lead: string }[] = [];
 
     linkElements.each((index, el) => {
-      const title = $(el).text().trim();
+      const title = source.selectors.title
+        ? $(source.selectors.title).eq(index).text().trim()
+        : $(el).text().trim();
+      if (!title && source.selectors.title) {
+        console.warn(`${source.name}: title selector matched nothing at index ${index}`);
+      }
       const rawHref = $(el).attr("href");
 
       if (!rawHref) return;
@@ -80,6 +86,9 @@ for (const source of sources) {
       let lead = "";
       if (source.selectors.lead) {
         lead = $(source.selectors.lead).eq(index).text().trim();
+        if (!lead) {
+          console.warn(`${source.name}: lead selector matched nothing at index ${index}`);
+        }
       }
 
       articles.push({ source_url: source.url, article_url, title, lead });
