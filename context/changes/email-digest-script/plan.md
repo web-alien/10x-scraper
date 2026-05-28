@@ -291,13 +291,13 @@ Implement the complete digest send script. The entire file follows `scripts/scra
 
 #### Automated
 
-- [x] 2.1 `npm run build` passes (no TypeScript errors)
-- [x] 2.2 `npm run lint` passes
+- [x] 2.1 `npm run build` passes (no TypeScript errors) — 54b1413
+- [x] 2.2 `npm run lint` passes — 54b1413
 
 #### Manual
 
-- [x] 2.3 Email received with correct format (H2 per source, bold title link, lead text)
-- [x] 2.4 `digest_sent_at` updated in Supabase after send
-- [x] 2.5 Second run logs "Brak nowych artykułów" — no duplicate email
-- [x] 2.6 Empty `subscribers.json` exits gracefully, no crash
-- [x] 2.7 Missing `RESEND_API_KEY` exits with `console.error` and code 1
+- [x] 2.3 Email received with correct format (H2 per source, bold title link, lead text) — 54b1413
+- [x] 2.4 `digest_sent_at` updated in Supabase after send — 54b1413
+- [x] 2.5 Second run logs "Brak nowych artykułów" — no duplicate email — 54b1413
+- [x] 2.6 Empty `subscribers.json` exits gracefully, no crash — 54b1413
+- [x] 2.7 Missing `RESEND_API_KEY` exits with `console.error` and code 1 — 54b1413
