@@ -70,6 +70,7 @@ const astroConfig = tseslint.config({
 
 export default tseslint.config(
   includeIgnoreFile(gitignorePath),
+  { ignores: ["src/types/supabase.ts"] },
   baseConfig,
   reactConfig,
   eslintPluginAstro.configs["flat/recommended"],

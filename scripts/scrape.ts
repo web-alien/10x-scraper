@@ -66,9 +66,7 @@ for (const source of sources) {
     const articles: { source_url: string; article_url: string; title: string; lead: string }[] = [];
 
     linkElements.each((index, el) => {
-      const title = source.selectors.title
-        ? $(source.selectors.title).eq(index).text().trim()
-        : $(el).text().trim();
+      const title = source.selectors.title ? $(source.selectors.title).eq(index).text().trim() : $(el).text().trim();
       if (!title && source.selectors.title) {
         console.warn(`${source.name}: title selector matched nothing at index ${index}`);
       }
@@ -99,7 +97,12 @@ for (const source of sources) {
       continue;
     }
 
-    const dbRows = articles.map(({ source_url, article_url, title, lead }) => ({ source_url, article_url, title, lead }));
+    const dbRows = articles.map(({ source_url, article_url, title, lead }) => ({
+      source_url,
+      article_url,
+      title,
+      lead,
+    }));
 
     const { data, error } = await supabase
       .from("articles_seen")
