@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Example Blog",
+    "url": "https://blog.example.com",
+    "selectors": {
+      "articleLink": ".post-list .post-title a",
+      "lead": ".post-list .post-excerpt"
+    }
+  }
+]
