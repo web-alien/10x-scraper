@@ -1,10 +1,10 @@
 ---
 change_id: scraper-script
 title: Scraper script
-status: impl_reviewed
+status: archived
 created: 2026-05-28
 updated: 2026-05-28
-archived_at: null
+archived_at: 2026-05-28T12:59:20Z
 ---
 
 ## Notes

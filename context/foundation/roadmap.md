@@ -30,7 +30,7 @@ Ręczne śledzenie wielu serwisów internetowych jest czasochłonne, a wiele źr
 | ID   | Change ID             | Outcome (admin może …)                                               | Prerequisites | PRD refs                      | Status   |
 |------|-----------------------|----------------------------------------------------------------------|---------------|-------------------------------|----------|
 | F-01 | supabase-dedup-schema | (foundation) tabela `articles_seen` gotowa w Supabase                | —             | FR-004, §Business Logic       | done     |
-| S-01 | scraper-script        | uruchomić scraping i zobaczyć nowe artykuły z każdego źródła         | F-01          | FR-001, FR-003, FR-004, US-01 | proposed |
+| S-01 | scraper-script        | uruchomić scraping i zobaczyć nowe artykuły z każdego źródła         | F-01          | FR-001, FR-003, FR-004, US-01 | done     |
 | S-02 | email-digest-script   | uruchomić wysyłkę i subskrybenci otrzymują digest mailowy            | S-01          | FR-002, FR-005, FR-006, US-01 | proposed |
 
 ## Baseline
@@ -72,7 +72,7 @@ Stan kodu na 2026-05-25 (auto-zbadany + potwierdzony). Foundations poniżej zak�
 - **Unknowns:**
   - Jaką bibliotekę HTML do parsowania wybrać (cheerio / playwright / Puppeteer)? — Owner: TBD (decyzja techniczna dla `/10x-plan`). Block: no.
 - **Risk:** Selektory HTML są zależne od struktury konkretnych stron — działające w dev mogą nie działać na wszystkich źródłach; testowanie na żywych danych (cel `market-feedback`) jest wymaganą weryfikacją. Sekwencjonowane pierwsze jako najbardziej ryzykowna hipoteza produktu.
-- **Status:** proposed
+- **Status:** done
 
 ### S-02: Skrypt wysyłkowy — digest email
 
@@ -114,3 +114,4 @@ Stan kodu na 2026-05-25 (auto-zbadany + potwierdzony). Foundations poniżej zak�
 ## Done
 
 - **F-01: (foundation) tabela `articles_seen` gotowa w Supabase** — Archived 2026-05-28 → `context/archive/2026-05-26-supabase-dedup-schema/`. Lesson: —.
+- **S-01: Admin może uruchomić scraping i zobaczyć nowe artykuły z każdego źródła** — Archived 2026-05-28 → `context/archive/2026-05-28-scraper-script/`. Lesson: —.
