@@ -276,28 +276,28 @@ Implement the complete digest send script. The entire file follows `scripts/scra
 
 #### Automated
 
-- [x] 1.1 Migration applies cleanly: `npx supabase db push`
-- [x] 1.2 `src/types/supabase.ts` contains `digest_sent_at` after regen
-- [x] 1.3 `npm run build` passes
+- [x] 1.1 Migration applies cleanly: `npx supabase db push` — 8d1edb9
+- [x] 1.2 `src/types/supabase.ts` contains `digest_sent_at` after regen — 8d1edb9
+- [x] 1.3 `npm run build` passes — 8d1edb9
 - [ ] 1.4 `npm run lint` passes
 
 #### Manual
 
-- [x] 1.5 `digest_sent_at` column visible in Supabase dashboard
-- [x] 1.6 `resend` in `package.json` devDependencies
-- [x] 1.7 `npm run send` exits with error on missing env keys (startup guard confirmed)
+- [x] 1.5 `digest_sent_at` column visible in Supabase dashboard — 8d1edb9
+- [x] 1.6 `resend` in `package.json` devDependencies — 8d1edb9
+- [x] 1.7 `npm run send` exits with error on missing env keys (startup guard confirmed) — 8d1edb9
 
 ### Phase 2: scripts/send.ts implementation
 
 #### Automated
 
-- [ ] 2.1 `npm run build` passes (no TypeScript errors)
-- [ ] 2.2 `npm run lint` passes
+- [x] 2.1 `npm run build` passes (no TypeScript errors)
+- [x] 2.2 `npm run lint` passes
 
 #### Manual
 
-- [ ] 2.3 Email received with correct format (H2 per source, bold title link, lead text)
-- [ ] 2.4 `digest_sent_at` updated in Supabase after send
-- [ ] 2.5 Second run logs "Brak nowych artykułów" — no duplicate email
-- [ ] 2.6 Empty `subscribers.json` exits gracefully, no crash
-- [ ] 2.7 Missing `RESEND_API_KEY` exits with `console.error` and code 1
+- [x] 2.3 Email received with correct format (H2 per source, bold title link, lead text)
+- [x] 2.4 `digest_sent_at` updated in Supabase after send
+- [x] 2.5 Second run logs "Brak nowych artykułów" — no duplicate email
+- [x] 2.6 Empty `subscribers.json` exits gracefully, no crash
+- [x] 2.7 Missing `RESEND_API_KEY` exits with `console.error` and code 1
