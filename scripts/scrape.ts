@@ -49,8 +49,11 @@ for (const source of sources) {
     }, 10_000);
 
     let html: string;
+    // AbortController only aborts the TCP connection phase; response.text() body read
+    // is not bounded by the signal. Accepted limitation for manually-run news scraping.
     try {
       const response = await fetch(source.url, { signal: controller.signal });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
       html = await response.text();
     } finally {
       clearTimeout(timeout);
@@ -59,6 +62,7 @@ for (const source of sources) {
     const $ = load(html);
     const linkElements = $(source.selectors.articleLink);
 
+    // title/lead collected here for future S-02 use; only source_url/article_url go to DB now
     const articles: { source_url: string; article_url: string; title: string; lead: string }[] = [];
 
     linkElements.each((index, el) => {
