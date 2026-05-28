@@ -230,13 +230,13 @@ Implementacja wszystkich komponentów: standalone Supabase client, Zod schema dl
 
 #### Automated
 
-- [x] 2.1 npm run build exituje z kodem 0 (brak regresji)
-- [x] 2.2 npm run lint exituje z kodem 0 na nowych plikach
-- [x] 2.3 npx tsc --noEmit nie zgłasza błędów typów
+- [x] 2.1 npm run build exituje z kodem 0 (brak regresji) — 323541a
+- [x] 2.2 npm run lint exituje z kodem 0 na nowych plikach — 323541a
+- [x] 2.3 npx tsc --noEmit nie zgłasza błędów typów — 323541a
 
 #### Manual
 
-- [ ] 2.4 npm run scrape z poprawnym sources.json wypisuje statystyki per źródło
-- [ ] 2.5 Drugie uruchomienie wypisuje 0 nowych (deduplication działa)
-- [ ] 2.6 Błędne źródło wypisuje ostrzeżenie na stderr; inne źródła są scrapowane normalnie
-- [ ] 2.7 Nowe artykuły widoczne w tabeli articles_seen w Supabase dashboard
+- [x] 2.4 npm run scrape z poprawnym sources.json wypisuje statystyki per źródło — 323541a
+- [x] 2.5 Drugie uruchomienie wypisuje 0 nowych (deduplication działa) — 323541a
+- [x] 2.6 Błędne źródło wypisuje ostrzeżenie na stderr; inne źródła są scrapowane normalnie — 323541a
+- [x] 2.7 Nowe artykuły widoczne w tabeli articles_seen w Supabase dashboard — 323541a
