@@ -1,5 +1,9 @@
 {
   "mcpServers": {
+    "exa": {
+      "type": "sse",
+      "url": "https://mcp.exa.ai/mcp?exaApiKey=2a410a8d-fd2b-42f9-83cf-550a05fd575c"
+    },
     "cloudflare": {
       "type": "http",
       "url": "https://mcp.cloudflare.com/mcp"
