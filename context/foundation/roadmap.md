@@ -3,7 +3,7 @@ project: 10xScraper
 version: 1
 status: draft
 created: 2026-05-25
-updated: 2026-05-25
+updated: 2026-05-28
 prd_version: 1
 main_goal: market-feedback
 top_blocker: time
@@ -29,7 +29,7 @@ Ręczne śledzenie wielu serwisów internetowych jest czasochłonne, a wiele źr
 
 | ID   | Change ID             | Outcome (admin może …)                                               | Prerequisites | PRD refs                      | Status   |
 |------|-----------------------|----------------------------------------------------------------------|---------------|-------------------------------|----------|
-| F-01 | supabase-dedup-schema | (foundation) tabela `articles_seen` gotowa w Supabase                | —             | FR-004, §Business Logic       | ready    |
+| F-01 | supabase-dedup-schema | (foundation) tabela `articles_seen` gotowa w Supabase                | —             | FR-004, §Business Logic       | done     |
 | S-01 | scraper-script        | uruchomić scraping i zobaczyć nowe artykuły z każdego źródła         | F-01          | FR-001, FR-003, FR-004, US-01 | proposed |
 | S-02 | email-digest-script   | uruchomić wysyłkę i subskrybenci otrzymują digest mailowy            | S-01          | FR-002, FR-005, FR-006, US-01 | proposed |
 
@@ -57,7 +57,7 @@ Stan kodu na 2026-05-25 (auto-zbadany + potwierdzony). Foundations poniżej zak�
 - **Blockers:** —
 - **Unknowns:** —
 - **Risk:** Musi być pierwsza — bez tabeli dedup scraper nie może ani sprawdzić duplikatów, ani zapisać stanu. Ryzyko minimalne: Supabase jest już skonfigurowany w baseline (partial).
-- **Status:** ready
+- **Status:** done
 
 ## Slices
 
@@ -113,4 +113,4 @@ Stan kodu na 2026-05-25 (auto-zbadany + potwierdzony). Foundations poniżej zak�
 
 ## Done
 
-(Puste przy pierwszym generowaniu. `/10x-archive` dopisuje wpis gdy zmiana o pasującym `Change ID` zostanie zarchiwizowana.)
+- **F-01: (foundation) tabela `articles_seen` gotowa w Supabase** — Archived 2026-05-28 → `context/archive/2026-05-26-supabase-dedup-schema/`. Lesson: —.
