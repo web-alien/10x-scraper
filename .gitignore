@@ -32,3 +32,6 @@ pnpm-debug.log*
 
 # scraper config (copy from sources.example.json — not committed to avoid leaking production URLs)
 sources.json
+
+# email digest subscriber list (copy from subscribers.example.json — not committed to avoid leaking email addresses)
+subscribers.json
