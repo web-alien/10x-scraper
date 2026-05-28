@@ -29,3 +29,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# scraper config (copy from sources.example.json — not committed to avoid leaking production URLs)
+sources.json
