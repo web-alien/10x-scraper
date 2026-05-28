@@ -218,21 +218,21 @@ Implementacja wszystkich komponentów: standalone Supabase client, Zod schema dl
 
 #### Automated
 
-- [x] 1.1 npm install exituje z kodem 0 po dodaniu nowych devDependencies
-- [x] 1.2 npm run build exituje z kodem 0 (brak regresji)
-- [x] 1.3 npm run lint exituje z kodem 0
+- [x] 1.1 npm install exituje z kodem 0 po dodaniu nowych devDependencies — 382b79c
+- [x] 1.2 npm run build exituje z kodem 0 (brak regresji) — 382b79c
+- [x] 1.3 npm run lint exituje z kodem 0 — 382b79c
 
 #### Manual
 
-- [x] 1.4 npm run scrape uruchamia się i exituje 0 z wyjściem "Scraper starting…"
+- [x] 1.4 npm run scrape uruchamia się i exituje 0 z wyjściem "Scraper starting…" — 382b79c
 
 ### Phase 2: Pełna implementacja scrapera
 
 #### Automated
 
-- [ ] 2.1 npm run build exituje z kodem 0 (brak regresji)
-- [ ] 2.2 npm run lint exituje z kodem 0 na nowych plikach
-- [ ] 2.3 npx tsc --noEmit nie zgłasza błędów typów
+- [x] 2.1 npm run build exituje z kodem 0 (brak regresji)
+- [x] 2.2 npm run lint exituje z kodem 0 na nowych plikach
+- [x] 2.3 npx tsc --noEmit nie zgłasza błędów typów
 
 #### Manual
 
