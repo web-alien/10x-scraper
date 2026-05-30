@@ -1,7 +1,7 @@
 ---
 change_id: articles-dashboard
 title: Articles Dashboard — przegląd artykułów + status wysyłki w UI
-status: planned
+status: impl_reviewed
 created: 2026-05-30
 updated: 2026-05-30
 archived_at: null

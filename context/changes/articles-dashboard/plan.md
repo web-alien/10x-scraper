@@ -185,20 +185,20 @@ Page title: "Artykuły — Dashboard". Uses the existing `Layout.astro` wrapper.
 
 #### Automated
 
-- [ ] 1.1 `npm run build` passes — ArticlesTable type-checks
-- [ ] 1.2 `npm run lint` passes
+- [x] 1.1 `npm run build` passes — ArticlesTable type-checks — fdc7529
+- [x] 1.2 `npm run lint` passes — fdc7529
 
 ### Phase 2: Service + Astro Page + Navigation
 
 #### Automated
 
-- [ ] 2.1 `npm run build` passes — full app builds
+- [x] 2.1 `npm run build` passes — full app builds — 6aa8314
 
 #### Manual
 
-- [ ] 2.2 `/dashboard` shows link to artykuły — visible and clickable
-- [ ] 2.3 `/dashboard/articles` loads — table renders with real articles
-- [ ] 2.4 Column header click → rows re-sort; same header again → direction reverses
-- [ ] 2.5 Article title link opens correct URL in new tab
-- [ ] 2.6 Status column shows "Nowy" for null `digest_sent_at`, "Wysłano" + date for non-null
-- [ ] 2.7 Unauthenticated access to `/dashboard/articles` → redirect to `/auth/signin`
+- [x] 2.2 `/dashboard` shows link to artykuły — visible and clickable — 6aa8314
+- [x] 2.3 `/dashboard/articles` loads — table renders with real articles — 6aa8314
+- [x] 2.4 Column header click → rows re-sort; same header again → direction reverses — 6aa8314
+- [x] 2.5 Article title link opens correct URL in new tab — 6aa8314
+- [x] 2.6 Status column shows "Nowy" for null `digest_sent_at`, "Wysłano" + date for non-null — 6aa8314
+- [x] 2.7 Unauthenticated access to `/dashboard/articles` → redirect to `/auth/signin` — 6aa8314
