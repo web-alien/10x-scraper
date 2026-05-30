@@ -32,8 +32,8 @@ Ręczne śledzenie wielu serwisów internetowych jest czasochłonne, a wiele źr
 | F-01 | supabase-dedup-schema    | (foundation) tabela `articles_seen` gotowa w Supabase                | —             | FR-004, §Business Logic       | done     |
 | S-01 | scraper-script           | uruchomić scraping i zobaczyć nowe artykuły z każdego źródła         | F-01          | FR-001, FR-003, FR-004, US-01 | done     |
 | S-02 | email-digest-script      | uruchomić wysyłkę i subskrybenci otrzymują digest mailowy            | S-01          | FR-002, FR-005, FR-006, US-01 | done     |
-| S-03 | auto-digest-cron         | zapomnieć o ręcznym uruchamianiu — scraping i wysyłka codziennie same | S-02         | FR-003 (note: cron v2)        | proposed |
-| S-04 | articles-dashboard       | zalogować się i zobaczyć zebranych artykuły + status wysyłki w UI    | S-02          | —                             | proposed |
+| S-03 | auto-digest-cron         | zapomnieć o ręcznym uruchamianiu — scraping i wysyłka codziennie same | S-02         | FR-003 (note: cron v2)        | done     |
+| S-04 | articles-dashboard       | zalogować się i zobaczyć zebranych artykuły + status wysyłki w UI    | S-02          | —                             | done     |
 
 ## Baseline
 
@@ -147,3 +147,5 @@ Stan kodu na 2026-05-25 (auto-zbadany + potwierdzony). Foundations poniżej zak�
 - **F-01: (foundation) tabela `articles_seen` gotowa w Supabase** — Archived 2026-05-28 → `context/archive/2026-05-26-supabase-dedup-schema/`. Lesson: —.
 - **S-01: Admin może uruchomić scraping i zobaczyć nowe artykuły z każdego źródła** — Archived 2026-05-28 → `context/archive/2026-05-28-scraper-script/`. Lesson: —.
 - **S-02: Admin może uruchomić wysyłkę i subskrybenci otrzymują digest mailowy** — Implemented 2026-05-28 → `context/changes/email-digest-script/`. Lesson: —.
+- **S-03: Admin nie musi ręcznie uruchamiać skryptów — cron robi to codziennie** — Implemented 2026-05-30 → `context/changes/auto-digest-cron/`. Wymaga 5 GitHub Secrets przed pierwszym uruchomieniem.
+- **S-04: Admin widzi artykuły i status wysyłki w UI bez Supabase Studio** — Implemented 2026-05-30 → `context/changes/articles-dashboard/`.
