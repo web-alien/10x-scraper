@@ -128,8 +128,8 @@ jobs:
 
 #### Automated
 
-- [ ] 1.1 `npm run build` passes — no regressions
-- [ ] 1.2 `.github/workflows/daily-digest.yml` exists with correct cron schedule
+- [x] 1.1 `npm run build` passes — no regressions
+- [x] 1.2 `.github/workflows/daily-digest.yml` exists with correct cron schedule
 
 #### Manual
 

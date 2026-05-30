@@ -1,7 +1,7 @@
 ---
 change_id: auto-digest-cron
 title: Auto Digest Cron — GitHub Actions daily workflow
-status: plan_reviewed
+status: implementing
 created: 2026-05-30
 updated: 2026-05-30
 archived_at: null
