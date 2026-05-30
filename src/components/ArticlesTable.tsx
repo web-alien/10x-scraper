@@ -49,6 +49,10 @@ export default function ArticlesTable({ articles }: Props) {
     return new Date(iso).toLocaleDateString("pl-PL");
   }
 
+  function safeHref(url: string) {
+    return /^https?:\/\//i.test(url) ? url : "#";
+  }
+
   function sourceHostname(url: string) {
     try {
       return new URL(url).hostname;
@@ -91,7 +95,7 @@ export default function ArticlesTable({ articles }: Props) {
               <TableRow key={article.id}>
                 <TableCell>
                   <a
-                    href={article.article_url}
+                    href={safeHref(article.article_url)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-primary underline"
