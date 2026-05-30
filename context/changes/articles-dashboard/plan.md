@@ -185,8 +185,8 @@ Page title: "Artykuły — Dashboard". Uses the existing `Layout.astro` wrapper.
 
 #### Automated
 
-- [ ] 1.1 `npm run build` passes — ArticlesTable type-checks
-- [ ] 1.2 `npm run lint` passes
+- [x] 1.1 `npm run build` passes — ArticlesTable type-checks
+- [x] 1.2 `npm run lint` passes
 
 ### Phase 2: Service + Astro Page + Navigation
 
