@@ -370,7 +370,7 @@ Add `npm test` to `ci.yml` so the test suite gates every push and PR to master.
 
 #### Automated
 
-- [x] 1.1 `npm test` runs successfully and the smoke test passes
+- [x] 1.1 `npm test` runs successfully and the smoke test passes — a36b73a
 
 #### Manual
 
@@ -380,13 +380,13 @@ Add `npm test` to `ci.yml` so the test suite gates every push and PR to master.
 
 #### Automated
 
-- [ ] 2.1 `npm test` — both scraper tests pass (3 tests total with smoke)
-- [ ] 2.2 `npm run lint` passes on modified and new files
-- [ ] 2.3 `npm run build` passes with no TypeScript errors
+- [x] 2.1 `npm test` — both scraper tests pass (3 tests total with smoke)
+- [x] 2.2 `npm run lint` passes on modified and new files
+- [x] 2.3 `npm run build` passes with no TypeScript errors
 
 #### Manual
 
-- [ ] 2.4 `npm run scrape` with `.env` set produces identical output to before the refactor
+- [x] 2.4 `npm run scrape` with `.env` set produces identical output to before the refactor
 
 ### Phase 3: Send Refactoring + Tests (Risk #2)
 
