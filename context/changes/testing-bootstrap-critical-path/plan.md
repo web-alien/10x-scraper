@@ -392,13 +392,13 @@ Add `npm test` to `ci.yml` so the test suite gates every push and PR to master.
 
 #### Automated
 
-- [x] 3.1 `npm test` — all 5 tests pass (smoke + 2 scraper + 2 send)
-- [x] 3.2 `npm run lint` passes
-- [x] 3.3 `npm run build` passes
+- [x] 3.1 `npm test` — all 5 tests pass (smoke + 2 scraper + 2 send) — 33e4a94
+- [x] 3.2 `npm run lint` passes — 33e4a94
+- [x] 3.3 `npm run build` passes — 33e4a94
 
 #### Manual
 
-- [x] 3.4 `npm run send` with invalid `RESEND_API_KEY` exits non-zero
+- [x] 3.4 `npm run send` with invalid `RESEND_API_KEY` exits non-zero — 33e4a94
 
 ### Phase 4: CI Gate Wiring
 
