@@ -380,25 +380,25 @@ Add `npm test` to `ci.yml` so the test suite gates every push and PR to master.
 
 #### Automated
 
-- [x] 2.1 `npm test` — both scraper tests pass (3 tests total with smoke)
-- [x] 2.2 `npm run lint` passes on modified and new files
-- [x] 2.3 `npm run build` passes with no TypeScript errors
+- [x] 2.1 `npm test` — both scraper tests pass (3 tests total with smoke) — 91c7c51
+- [x] 2.2 `npm run lint` passes on modified and new files — 91c7c51
+- [x] 2.3 `npm run build` passes with no TypeScript errors — 91c7c51
 
 #### Manual
 
-- [x] 2.4 `npm run scrape` with `.env` set produces identical output to before the refactor
+- [x] 2.4 `npm run scrape` with `.env` set produces identical output to before the refactor — 91c7c51
 
 ### Phase 3: Send Refactoring + Tests (Risk #2)
 
 #### Automated
 
-- [ ] 3.1 `npm test` — all 5 tests pass (smoke + 2 scraper + 2 send)
-- [ ] 3.2 `npm run lint` passes
-- [ ] 3.3 `npm run build` passes
+- [x] 3.1 `npm test` — all 5 tests pass (smoke + 2 scraper + 2 send)
+- [x] 3.2 `npm run lint` passes
+- [x] 3.3 `npm run build` passes
 
 #### Manual
 
-- [ ] 3.4 `npm run send` with invalid `RESEND_API_KEY` exits non-zero
+- [x] 3.4 `npm run send` with invalid `RESEND_API_KEY` exits non-zero
 
 ### Phase 4: CI Gate Wiring
 
