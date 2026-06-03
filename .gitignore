@@ -38,3 +38,6 @@ subscribers.json
 
 # stryker temp files
 .stryker-tmp
+
+# claude code local settings (personal overrides, not shared)
+.claude/settings.local.json
