@@ -35,3 +35,6 @@ sources.json
 
 # email digest subscriber list (copy from subscribers.example.json — not committed to avoid leaking email addresses)
 subscribers.json
+
+# stryker temp files
+.stryker-tmp

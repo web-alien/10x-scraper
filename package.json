@@ -40,6 +40,8 @@
   "devDependencies": {
     "@eslint/compat": "^2.0.3",
     "@eslint/js": "^9.29.0",
+    "@stryker-mutator/core": "^9.6.1",
+    "@stryker-mutator/vitest-runner": "^9.6.1",
     "cheerio": "^1.0.0",
     "dotenv": "^16.5.0",
     "eslint": "^9.29.0",
@@ -60,8 +62,8 @@
     "tsx": "^4.19.4",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.59.2",
-    "wrangler": "^4.90.0",
     "vitest": "latest",
+    "wrangler": "^4.90.0",
     "zod": "^4.4.3"
   },
   "overrides": {

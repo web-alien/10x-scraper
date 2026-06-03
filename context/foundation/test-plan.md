@@ -71,7 +71,7 @@ orchestrator updates Status as artifacts appear on disk.
 
 | # | Phase name | Goal (one line) | Risks covered | Test types | Status | Change folder |
 |---|------------|-----------------|---------------|------------|--------|---------------|
-| 1 | Bootstrap + critical-path coverage | Set up vitest; prove scraper output validation and email error propagation | #1, #2 | unit + integration | change opened | context/changes/testing-bootstrap-critical-path/ |
+| 1 | Bootstrap + critical-path coverage | Set up vitest; prove scraper output validation and email error propagation | #1, #2 | unit + integration | implementing | context/changes/testing-bootstrap-critical-path/ |
 | 2 | Deduplication + security coverage | Prove dedup fires correctly; verify email privacy addressing; add XSS regression | #3, #4, #5 | unit + integration | not started | — |
 | 3 | Operational gates wiring | Verify cron exit-code propagation; wire unit + integration gates to CI | #6 | workflow smoke + CI gate | not started | — |
 
