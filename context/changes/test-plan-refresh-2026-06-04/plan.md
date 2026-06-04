@@ -217,21 +217,21 @@ na:
 
 #### Automated
 
-- [x] 2.1 `git diff` shows 4 new lines in §2 (2 risk map rows + 2 guidance rows)
+- [x] 2.1 `git diff` shows 4 new lines in §2 (2 risk map rows + 2 guidance rows) — 5cf39c0
 
 #### Manual
 
-- [x] 2.2 Risk #7 i #8 spójne stylistycznie z #1–#6
-- [x] 2.3 Guidance rows dla #7 i #8 mają wypełnione wszystkie kolumny
-- [x] 2.4 Tabele markdown wyrównane poprawnie
+- [x] 2.2 Risk #7 i #8 spójne stylistycznie z #1–#6 — 5cf39c0
+- [x] 2.3 Guidance rows dla #7 i #8 mają wypełnione wszystkie kolumny — 5cf39c0
+- [x] 2.4 Tabele markdown wyrównane poprawnie — 5cf39c0
 
 ### Phase 3: §8 freshness dates
 
 #### Automated
 
-- [ ] 3.1 `git diff` shows exactly 4 date/text changes (header + 3 in §8)
+- [x] 3.1 `git diff` shows exactly 4 date/text changes (header + 3 in §8)
 
 #### Manual
 
-- [ ] 3.2 Wszystkie daty w §8 czytają 2026-06-04
-- [ ] 3.3 Header "Last updated" opisuje zmiany tej sesji
+- [x] 3.2 Wszystkie daty w §8 czytają 2026-06-04
+- [x] 3.3 Header "Last updated" opisuje zmiany tej sesji

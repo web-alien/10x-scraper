@@ -6,7 +6,7 @@
 >
 > Refresh: re-run `/10x-test-plan --refresh` when stale (see §8).
 >
-> Last updated: 2026-06-01 (Phase 1 change opened)
+> Last updated: 2026-06-04 (§7 auth exclusion refined; Risk #7, #8 added)
 
 ---
 
@@ -181,9 +181,9 @@ contributors should respect these unless the underlying assumption changes.
 
 ## 8. Freshness Ledger
 
-- Strategy (§1–§5) last reviewed: 2026-06-01
-- Stack versions last verified: 2026-06-01
-- AI-native tool references last verified: 2026-06-01 (none in use)
+- Strategy (§1–§5) last reviewed: 2026-06-04
+- Stack versions last verified: 2026-06-04
+- AI-native tool references last verified: 2026-06-04 (none in use)
 
 Refresh (`/10x-test-plan --refresh`) when:
 
