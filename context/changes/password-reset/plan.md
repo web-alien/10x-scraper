@@ -227,14 +227,14 @@ Handler callbacku wymienia kod recovery na sesję. Strona i API route reset-pass
 
 #### Automated
 
-- [x] 2.1 `npm run lint` przechodzi bez błędów
-- [x] 2.2 `npm run build` kompiluje się pomyślnie
+- [x] 2.1 `npm run lint` przechodzi bez błędów — 7d74079
+- [x] 2.2 `npm run build` kompiluje się pomyślnie — 7d74079
 
 #### Manual
 
-- [x] 2.3 Link recovery z emaila przekierowuje na /auth/reset-password
-- [x] 2.4 /auth/reset-password bez sesji przekierowuje na /auth/forgot-password
-- [x] 2.5 Formularz resetu waliduje długość hasła i zgodność potwierdzenia
-- [x] 2.6 Udany reset pokazuje zielony komunikat na /auth/signin
-- [x] 2.7 Stare hasło nie działa, nowe hasło loguje poprawnie
-- [x] 2.8 Użyty/wygasły link pokazuje błąd na /auth/forgot-password
+- [x] 2.3 Link recovery z emaila przekierowuje na /auth/reset-password — 7d74079
+- [x] 2.4 /auth/reset-password bez sesji przekierowuje na /auth/forgot-password — 7d74079
+- [x] 2.5 Formularz resetu waliduje długość hasła i zgodność potwierdzenia — 7d74079
+- [x] 2.6 Udany reset pokazuje zielony komunikat na /auth/signin — 7d74079
+- [x] 2.7 Stare hasło nie działa, nowe hasło loguje poprawnie — 7d74079
+- [x] 2.8 Użyty/wygasły link pokazuje błąd na /auth/forgot-password — 7d74079
