@@ -213,28 +213,28 @@ Handler callbacku wymienia kod recovery na sesję. Strona i API route reset-pass
 
 #### Automated
 
-- [x] 1.1 `npm run lint` przechodzi bez błędów
-- [x] 1.2 `npm run build` kompiluje się pomyślnie
+- [x] 1.1 `npm run lint` przechodzi bez błędów — dc171e5
+- [x] 1.2 `npm run build` kompiluje się pomyślnie — dc171e5
 
 #### Manual
 
-- [x] 1.3 Link "Zapomniałeś hasła?" widoczny na sign-in poniżej pola hasła
-- [x] 1.4 /auth/forgot-password renderuje formularz email
-- [x] 1.5 Nieprawidłowy email pokazuje błąd walidacji
-- [x] 1.6 Prawidłowy email pokazuje stan "Sprawdź swoją skrzynkę"
+- [x] 1.3 Link "Zapomniałeś hasła?" widoczny na sign-in poniżej pola hasła — dc171e5
+- [x] 1.4 /auth/forgot-password renderuje formularz email — dc171e5
+- [x] 1.5 Nieprawidłowy email pokazuje błąd walidacji — dc171e5
+- [x] 1.6 Prawidłowy email pokazuje stan "Sprawdź swoją skrzynkę" — dc171e5
 
 ### Phase 2: PKCE callback + "Reset password" flow
 
 #### Automated
 
-- [ ] 2.1 `npm run lint` przechodzi bez błędów
-- [ ] 2.2 `npm run build` kompiluje się pomyślnie
+- [x] 2.1 `npm run lint` przechodzi bez błędów
+- [x] 2.2 `npm run build` kompiluje się pomyślnie
 
 #### Manual
 
-- [ ] 2.3 Link recovery z emaila przekierowuje na /auth/reset-password
-- [ ] 2.4 /auth/reset-password bez sesji przekierowuje na /auth/forgot-password
-- [ ] 2.5 Formularz resetu waliduje długość hasła i zgodność potwierdzenia
-- [ ] 2.6 Udany reset pokazuje zielony komunikat na /auth/signin
-- [ ] 2.7 Stare hasło nie działa, nowe hasło loguje poprawnie
-- [ ] 2.8 Użyty/wygasły link pokazuje błąd na /auth/forgot-password
+- [x] 2.3 Link recovery z emaila przekierowuje na /auth/reset-password
+- [x] 2.4 /auth/reset-password bez sesji przekierowuje na /auth/forgot-password
+- [x] 2.5 Formularz resetu waliduje długość hasła i zgodność potwierdzenia
+- [x] 2.6 Udany reset pokazuje zielony komunikat na /auth/signin
+- [x] 2.7 Stare hasło nie działa, nowe hasło loguje poprawnie
+- [x] 2.8 Użyty/wygasły link pokazuje błąd na /auth/forgot-password

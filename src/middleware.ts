@@ -21,5 +21,13 @@ export const onRequest = defineMiddleware(async (context, next) => {
     }
   }
 
+  if (context.url.pathname.startsWith("/auth/reset-password")) {
+    if (!context.locals.user) {
+      return context.redirect(
+        `/auth/forgot-password?error=${encodeURIComponent("Link jest nieprawidłowy lub wygasł")}`,
+      );
+    }
+  }
+
   return next();
 });

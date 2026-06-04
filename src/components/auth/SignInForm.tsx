@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Mail, Lock, LogIn } from "lucide-react";
+import { Mail, Lock, LogIn, CheckCircle } from "lucide-react";
 import { FormField } from "@/components/auth/FormField";
 import { PasswordToggle } from "@/components/auth/PasswordToggle";
 import { SubmitButton } from "@/components/auth/SubmitButton";
@@ -7,9 +7,10 @@ import { ServerError } from "@/components/auth/ServerError";
 
 interface Props {
   serverError?: string | null;
+  serverSuccess?: string | null;
 }
 
-export default function SignInForm({ serverError }: Props) {
+export default function SignInForm({ serverError, serverSuccess }: Props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -83,6 +84,13 @@ export default function SignInForm({ serverError }: Props) {
       />
 
       <ServerError message={serverError} />
+
+      {serverSuccess === "password-reset" && (
+        <p className="flex items-center gap-2 rounded-lg border border-green-500/30 bg-green-900/30 px-3 py-2 text-sm text-green-300">
+          <CheckCircle className="size-4 shrink-0" />
+          Hasło zostało zmienione. Możesz się zalogować.
+        </p>
+      )}
 
       <SubmitButton pendingText="Signing in..." icon={<LogIn className="size-4" />}>
         Zaloguj
