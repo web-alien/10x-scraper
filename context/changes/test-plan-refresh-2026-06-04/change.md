@@ -1,7 +1,7 @@
 ---
 change_id: test-plan-refresh-2026-06-04
 title: Refresh test-plan auth exclusion scope after password-reset customisation
-status: implementing
+status: implemented
 created: 2026-06-04
 updated: 2026-06-04
 archived_at: null

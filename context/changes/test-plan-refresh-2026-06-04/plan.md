@@ -229,9 +229,9 @@ na:
 
 #### Automated
 
-- [x] 3.1 `git diff` shows exactly 4 date/text changes (header + 3 in §8)
+- [x] 3.1 `git diff` shows exactly 4 date/text changes (header + 3 in §8) — e0c8a95
 
 #### Manual
 
-- [x] 3.2 Wszystkie daty w §8 czytają 2026-06-04
-- [x] 3.3 Header "Last updated" opisuje zmiany tej sesji
+- [x] 3.2 Wszystkie daty w §8 czytają 2026-06-04 — e0c8a95
+- [x] 3.3 Header "Last updated" opisuje zmiany tej sesji — e0c8a95
