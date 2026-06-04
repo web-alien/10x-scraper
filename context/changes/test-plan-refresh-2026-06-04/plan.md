@@ -205,25 +205,25 @@ na:
 
 #### Automated
 
-- [x] 1.1 `git diff` shows exactly one bullet replaced in §7, no other changes
+- [x] 1.1 `git diff` shows exactly one bullet replaced in §7, no other changes — c88a9c6
 
 #### Manual
 
-- [x] 1.2 §7 auth bullet precyzyjnie wyklucza form UI i API routes
-- [x] 1.3 Carve-outy dla guard i callback jawnie wymienione z referencją do Risk #7, #8
-- [x] 1.4 Klauzula "Re-evaluate if" nie istnieje
+- [x] 1.2 §7 auth bullet precyzyjnie wyklucza form UI i API routes — c88a9c6
+- [x] 1.3 Carve-outy dla guard i callback jawnie wymienione z referencją do Risk #7, #8 — c88a9c6
+- [x] 1.4 Klauzula "Re-evaluate if" nie istnieje — c88a9c6
 
 ### Phase 2: §2 risk map — Risk #7 and #8
 
 #### Automated
 
-- [ ] 2.1 `git diff` shows 4 new lines in §2 (2 risk map rows + 2 guidance rows)
+- [x] 2.1 `git diff` shows 4 new lines in §2 (2 risk map rows + 2 guidance rows)
 
 #### Manual
 
-- [ ] 2.2 Risk #7 i #8 spójne stylistycznie z #1–#6
-- [ ] 2.3 Guidance rows dla #7 i #8 mają wypełnione wszystkie kolumny
-- [ ] 2.4 Tabele markdown wyrównane poprawnie
+- [x] 2.2 Risk #7 i #8 spójne stylistycznie z #1–#6
+- [x] 2.3 Guidance rows dla #7 i #8 mają wypełnione wszystkie kolumny
+- [x] 2.4 Tabele markdown wyrównane poprawnie
 
 ### Phase 3: §8 freshness dates
 
