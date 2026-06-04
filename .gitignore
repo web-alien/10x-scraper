@@ -39,5 +39,8 @@ subscribers.json
 # stryker temp files
 .stryker-tmp
 
+# playwright auth state (contains session cookies — never commit)
+playwright/.auth/
+
 # claude code local settings (personal overrides, not shared)
 .claude/settings.local.json
