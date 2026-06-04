@@ -67,6 +67,11 @@ export default function SignInForm({ serverError }: Props) {
         placeholder="Your password"
         error={errors.password}
         icon={<Lock className="size-4" />}
+        hint={
+          <a href="/auth/forgot-password" className="mt-1 block text-right text-xs text-purple-300 hover:underline">
+            Zapomniałeś hasła?
+          </a>
+        }
         endContent={
           <PasswordToggle
             visible={showPassword}
