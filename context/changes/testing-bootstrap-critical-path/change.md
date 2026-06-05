@@ -1,7 +1,7 @@
 ---
 change_id: testing-bootstrap-critical-path
 title: Testing bootstrap critical path
-status: implemented
+status: impl_reviewed
 created: 2026-06-01
 updated: 2026-06-05
 archived_at: null

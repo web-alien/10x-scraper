@@ -4,7 +4,7 @@
 - **Plan**: context/changes/testing-bootstrap-critical-path/plan.md
 - **Scope**: Phases 1–4 (all)
 - **Date**: 2026-06-05
-- **Verdict**: NEEDS ATTENTION
+- **Verdict**: APPROVED (post-triage)
 - **Findings**: 0 critical  5 warnings  3 observations
 
 ## Verdicts
@@ -39,7 +39,7 @@
   - Tradeoff: Adds a dependency; overkill for this simple template.
   - Confidence: MED — increases surface area without proportional gain.
   - Blind spot: Still needs F2 fix for href validation.
-- **Decision**: PENDING
+- **Decision**: FIXED
 
 ### F2 — Unvalidated href in email links
 
@@ -53,7 +53,7 @@
   - Tradeoff: Legitimate articles with unusual schemes silently disappear — log the skip so it's visible.
   - Confidence: HIGH — URL scheme validation is standard practice.
   - Blind spot: Doesn't prevent `data:` URIs; add to the allowlist check.
-- **Decision**: PENDING
+- **Decision**: FIXED
 
 ### F3 — Serial subscriber send loop
 
@@ -72,7 +72,7 @@
   - Tradeoff: Latency grows unbounded as subscriber list grows.
   - Confidence: MED — fine for MVP scale.
   - Blind spot: None significant.
-- **Decision**: PENDING
+- **Decision**: FIXED
 
 ### F4 — Title selector fragility (surfaced by refactor)
 
@@ -86,7 +86,7 @@
   - Tradeoff: Selector config format may need extending — verify against sources.json.
   - Confidence: MED — depends on actual structure of sources.json.
   - Blind spot: Haven't checked if any live source relies on the global-index pattern for correct titles.
-- **Decision**: PENDING
+- **Decision**: FIXED
 
 ### F5 — vitest pinned to "latest"
 
@@ -96,9 +96,9 @@
 - **Location**: package.json:66
 - **Detail**: `"vitest": "latest"` resolves at install time; a future `npm ci` can silently pull a new major version with breaking API changes. All other devDependencies use pinned semver ranges.
 - **Fix**: Run `npm ls vitest` to get the installed version, then use `"vitest": "^X.Y.Z"` in package.json.
-- **Decision**: PENDING
+- **Decision**: FIXED
 
-### F6 — Extra unplanned test in scraper.test.ts
+### F6 — Extra unplanned test in scraper.test.ts (ACCEPTED)
 
 - **Severity**: 💡 OBSERVATION
 - **Impact**: 🏃 LOW — quick decision; fix is obvious and narrowly scoped
@@ -106,7 +106,7 @@
 - **Location**: tests/scraper.test.ts:56–67
 - **Detail**: A third test — "Supabase error: throws instead of returning zero counts" — was added beyond the two planned tests. It covers the `if (error) throw` path in scrape.ts (a real bug fix). The test is correct and useful but was not in the plan.
 - **Fix**: Acknowledge as accepted scope creep — no removal needed; accept as-is.
-- **Decision**: PENDING
+- **Decision**: ACCEPTED
 
 ### F7 — Pending manual check 1.2 (clean-shell test)
 
@@ -116,7 +116,7 @@
 - **Location**: plan.md Progress §Phase 1 Manual
 - **Detail**: Check 1.2 (`npm test` in clean shell without .env does not crash) remains unchecked across all sessions.
 - **Fix**: Run `npm test` in a shell without .env loaded, confirm exit 0, flip 1.2 in Progress.
-- **Decision**: PENDING
+- **Decision**: FIXED
 
 ### F8 — Mock doesn't cover deduplication count
 
@@ -126,4 +126,4 @@
 - **Location**: tests/scraper.test.ts:25
 - **Detail**: The Supabase mock always returns all rows as inserted. The `duplicateCount` calculation is never exercised against a shorter `data` array — a regression in that calculation would not be caught.
 - **Fix**: Add a test case where the mock returns fewer rows than upserted, assert `duplicateCount > 0`.
-- **Decision**: PENDING
+- **Decision**: FIXED
