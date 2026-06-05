@@ -404,8 +404,8 @@ Add `npm test` to `ci.yml` so the test suite gates every push and PR to master.
 
 #### Automated
 
-- [ ] 4.1 CI run on GitHub passes with `npm test` step visible and green
+- [x] 4.1 CI run on GitHub passes with `npm test` step visible and green — 3eb6373
 
 #### Manual
 
-- [ ] 4.2 Deliberate test failure causes `npm test` to exit non-zero locally
+- [x] 4.2 Deliberate test failure causes `npm test` to exit non-zero locally — 3eb6373
