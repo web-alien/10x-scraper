@@ -77,8 +77,7 @@ export async function processSource(
     .select("id");
 
   if (error) {
-    console.error(`${source.name}: Supabase error: ${error.message}`);
-    return { newCount: 0, duplicateCount: 0 };
+    throw new Error(`Supabase upsert failed: ${error.message}`);
   }
 
   const newCount = data.length;
@@ -111,6 +110,7 @@ if (process.argv[1] === __filename) {
 
   let totalNew = 0;
   let totalDuplicates = 0;
+  let hasErrors = false;
 
   for (const source of sources) {
     try {
@@ -138,9 +138,11 @@ if (process.argv[1] === __filename) {
       }
     } catch (err) {
       console.error(`${source.name}: Error: ${err instanceof Error ? err.message : String(err)}`);
+      hasErrors = true;
     }
   }
 
   console.log("---");
   console.log(`Łącznie: ${totalNew} nowych, ${totalDuplicates} duplikatów`);
+  if (hasErrors) process.exit(1);
 }

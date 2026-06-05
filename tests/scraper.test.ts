@@ -53,6 +53,19 @@ describe("processSource", () => {
     expect(result.newCount).toBeGreaterThanOrEqual(1);
   });
 
+  it("Supabase error: throws instead of returning zero counts", async () => {
+    const errorMock = {
+      from: () => ({
+        upsert: () => ({
+          select: () => Promise.resolve({ data: null, error: { message: "connection refused" } }),
+        }),
+      }),
+    };
+    await expect(processSource(validHtml, source, errorMock as unknown as SupabaseClient<Database>)).rejects.toThrow(
+      "connection refused",
+    );
+  });
+
   it("empty-selector HTML: warns and returns zero counts without calling upsert", async () => {
     const warnSpy = vi.spyOn(console, "warn");
     const capturedRows: unknown[] = [];
