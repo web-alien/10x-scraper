@@ -223,25 +223,25 @@ npx wrangler secret put SENTRY_DSN
 
 #### Automated
 
-- [x] 1.1 TypeScript kompiluje bez błędów: `npx tsc --noEmit`
-- [x] 1.2 Lint przechodzi: `npm run lint`
+- [x] 1.1 TypeScript kompiluje bez błędów: `npx tsc --noEmit` — 14408be
+- [x] 1.2 Lint przechodzi: `npm run lint` — 14408be
 
 #### Manual
 
-- [x] 1.3 Plik `sentry.server.config.ts` istnieje w korzeniu projektu
-- [x] 1.4 `wrangler.jsonc` ma `"main": "./sentry.server.config.ts"`
+- [x] 1.3 Plik `sentry.server.config.ts` istnieje w korzeniu projektu — 14408be
+- [x] 1.4 `wrangler.jsonc` ma `"main": "./sentry.server.config.ts"` — 14408be
 
 ### Phase 2: Astro integration and env vars
 
 #### Automated
 
-- [ ] 2.1 Build przechodzi bez błędów: `npm run build`
-- [ ] 2.2 TypeScript kompiluje bez błędów: `npx tsc --noEmit`
+- [x] 2.1 Build przechodzi bez błędów: `npm run build`
+- [x] 2.2 TypeScript kompiluje bez błędów: `npx tsc --noEmit`
 
 #### Manual
 
-- [ ] 2.3 `npm run dev` startuje bez błędów
-- [ ] 2.4 Output buildu zawiera `[sentry-vite-plugin]`
+- [x] 2.3 `npm run dev` startuje bez błędów
+- [x] 2.4 Output buildu zawiera `[sentry-vite-plugin]`
 
 ### Phase 3: End-to-end verification
 
