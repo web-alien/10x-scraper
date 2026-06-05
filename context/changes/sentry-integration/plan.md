@@ -235,22 +235,22 @@ npx wrangler secret put SENTRY_DSN
 
 #### Automated
 
-- [x] 2.1 Build przechodzi bez błędów: `npm run build`
-- [x] 2.2 TypeScript kompiluje bez błędów: `npx tsc --noEmit`
+- [x] 2.1 Build przechodzi bez błędów: `npm run build` — a408e97
+- [x] 2.2 TypeScript kompiluje bez błędów: `npx tsc --noEmit` — a408e97
 
 #### Manual
 
-- [x] 2.3 `npm run dev` startuje bez błędów
-- [x] 2.4 Output buildu zawiera `[sentry-vite-plugin]`
+- [x] 2.3 `npm run dev` startuje bez błędów — a408e97
+- [x] 2.4 Output buildu zawiera `[sentry-vite-plugin]` — a408e97
 
 ### Phase 3: End-to-end verification
 
 #### Automated
 
-- [ ] 3.1 `npm run build` przechodzi
-- [ ] 3.2 `npm run lint` — brak błędów
+- [x] 3.1 `npm run build` przechodzi
+- [x] 3.2 `npm run lint` — brak błędów
 
 #### Manual
 
-- [ ] 3.3 `npm run dev` bez DSN startuje normalnie (no-op)
-- [ ] 3.4 Test event z DSN w `.dev.vars` pojawia się w Sentry dashboard
+- [x] 3.3 `npm run dev` bez DSN startuje normalnie (no-op)
+- [x] 3.4 Test event z DSN w `.dev.vars` pojawia się w Sentry dashboard
