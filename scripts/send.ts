@@ -25,50 +25,64 @@ export async function runDigest(
   supabase: SupabaseClient<Database>,
   fromEmail: string,
 ): Promise<{ failedCount: number }> {
+  const safeArticles = articles.filter((a) => {
+    try {
+      const scheme = new URL(a.article_url).protocol;
+      if (scheme !== "http:" && scheme !== "https:") {
+        console.warn(`runDigest: skipping article with unsafe URL scheme: ${a.article_url}`);
+        return false;
+      }
+      return true;
+    } catch {
+      console.warn(`runDigest: skipping article with invalid URL: ${a.article_url}`);
+      return false;
+    }
+  });
+
   const grouped = new Map<string, Article[]>();
-  for (const article of articles) {
+  for (const article of safeArticles) {
     const host = new URL(article.source_url).hostname;
     const group = grouped.get(host) ?? [];
     group.push(article);
     grouped.set(host, group);
   }
 
-  const subject = `Digest — ${articles.length} nowych artykułów — ${new Date().toLocaleDateString("pl-PL")}`;
+  const subject = `Digest — ${safeArticles.length} nowych artykułów — ${new Date().toLocaleDateString("pl-PL")}`;
+
+  const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
   let html = `<h1>${subject}</h1>`;
   for (const [hostname, group] of grouped) {
-    html += `<h2>${hostname}</h2>`;
+    html += `<h2>${esc(hostname)}</h2>`;
     for (const article of group) {
-      const titleText = article.title ?? article.article_url;
+      const titleText = esc(article.title ?? article.article_url);
       html += `<p><strong><a href="${article.article_url}">${titleText}</a></strong></p>`;
       if (article.lead) {
-        html += `<p>${article.lead}</p>`;
+        html += `<p>${esc(article.lead)}</p>`;
       }
     }
   }
 
-  let failedCount = 0;
-  for (const email of subscribers) {
-    const { data, error } = await resend.emails.send({
-      from: fromEmail,
-      to: [email],
-      subject,
-      html,
-    });
-    if (error) {
-      console.error(`${email}: Resend error:`, error.message);
-      failedCount++;
-    } else {
-      console.log(`${email}: wysłano (id: ${data.id})`);
-    }
-  }
+  const results = await Promise.allSettled(
+    subscribers.map((email) =>
+      resend.emails.send({ from: fromEmail, to: [email], subject, html }).then(({ data, error }) => {
+        if (error) {
+          console.error(`${email}: Resend error:`, error.message);
+          throw new Error(error.message);
+        }
+        console.log(`${email}: wysłano (id: ${data.id})`);
+        return data;
+      }),
+    ),
+  );
+  const failedCount = results.filter((r) => r.status === "rejected").length;
 
   const { error: updateError } = await supabase
     .from("articles_seen")
     .update({ digest_sent_at: new Date().toISOString() })
     .in(
       "id",
-      articles.map((a) => a.id),
+      safeArticles.map((a) => a.id),
     );
 
   if (updateError) {

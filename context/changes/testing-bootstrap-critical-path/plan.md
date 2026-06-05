@@ -374,7 +374,7 @@ Add `npm test` to `ci.yml` so the test suite gates every push and PR to master.
 
 #### Manual
 
-- [ ] 1.2 `npm test` in clean shell without `.env` does not crash with missing env-var errors
+- [x] 1.2 `npm test` in clean shell without `.env` does not crash with missing env-var errors
 
 ### Phase 2: Scraper Refactoring + Tests (Risk #1)
 

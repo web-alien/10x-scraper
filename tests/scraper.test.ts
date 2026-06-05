@@ -53,6 +53,21 @@ describe("processSource", () => {
     expect(result.newCount).toBeGreaterThanOrEqual(1);
   });
 
+  it("duplicate articles: returns duplicateCount > 0 when Supabase returns fewer rows", async () => {
+    const partialReturnMock = {
+      from: () => ({
+        upsert: () => ({
+          select: () => Promise.resolve({ data: [{ id: "id-0" }], error: null }),
+        }),
+      }),
+    };
+
+    const result = await processSource(validHtml, source, partialReturnMock as unknown as SupabaseClient<Database>);
+
+    expect(result.newCount).toBe(1);
+    expect(result.duplicateCount).toBeGreaterThan(0);
+  });
+
   it("Supabase error: throws instead of returning zero counts", async () => {
     const errorMock = {
       from: () => ({
