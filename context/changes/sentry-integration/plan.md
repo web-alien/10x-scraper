@@ -247,10 +247,10 @@ npx wrangler secret put SENTRY_DSN
 
 #### Automated
 
-- [x] 3.1 `npm run build` przechodzi
-- [x] 3.2 `npm run lint` — brak błędów
+- [x] 3.1 `npm run build` przechodzi — 305fc8f
+- [x] 3.2 `npm run lint` — brak błędów — 305fc8f
 
 #### Manual
 
-- [x] 3.3 `npm run dev` bez DSN startuje normalnie (no-op)
-- [x] 3.4 Test event z DSN w `.dev.vars` pojawia się w Sentry dashboard
+- [x] 3.3 `npm run dev` bez DSN startuje normalnie (no-op) — 305fc8f
+- [x] 3.4 Test event z DSN w `.dev.vars` pojawia się w Sentry dashboard — 305fc8f
