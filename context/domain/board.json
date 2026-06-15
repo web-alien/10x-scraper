@@ -1,0 +1,67 @@
+{
+  "title": "Event Storming — Scraper artykułów + dzienny newsletter",
+  "phase": "aggregates",
+  "items": [
+    { "id": "lbl-9", "role": "label", "text": "KONTEKST ① Subskrypcje", "x": 280, "y": 24, "fontSize": 18 },
+    { "id": "lbl-10", "role": "label", "text": "KONTEKST ② Scraping", "x": 850, "y": 24, "fontSize": 18 },
+    { "id": "lbl-11", "role": "label", "text": "KONTEKST ③ Dystrybucja (newsletter)", "x": 1430, "y": 24, "fontSize": 18 },
+    { "id": "lbl-1", "role": "label", "text": "Konfiguracja (jednorazowo)", "x": 150, "y": 250, "fontSize": 14 },
+    { "id": "lbl-2", "role": "label", "text": "Dzienny cykl: scraping → wysyłka", "x": 620, "y": 250, "fontSize": 14 },
+    { "id": "lbl-3", "role": "label", "text": "ścieżka błędu", "x": 740, "y": 425, "fontSize": 13 },
+    { "id": "lbl-4", "role": "label", "text": "Panel admina (w dowolnym momencie)", "x": 1790, "y": 250, "fontSize": 14 },
+
+    { "id": "act-1", "role": "actor", "text": "Administrator", "x": 140, "y": 92 },
+    { "id": "act-2", "role": "actor", "text": "Administrator", "x": 330, "y": 92 },
+    { "id": "act-3", "role": "actor", "text": "Scheduler (cron)", "x": 620, "y": 92 },
+    { "id": "act-4", "role": "actor", "text": "Scraper (system)", "x": 810, "y": 92 },
+    { "id": "act-5", "role": "actor", "text": "Scraper (system)", "x": 1190, "y": 92 },
+    { "id": "act-6", "role": "actor", "text": "Scheduler (cron)", "x": 1380, "y": 92 },
+    { "id": "act-7", "role": "actor", "text": "System wysyłki", "x": 1570, "y": 92 },
+    { "id": "act-8", "role": "actor", "text": "Administrator", "x": 1790, "y": 92 },
+
+    { "id": "cmd-1", "role": "command", "text": "Dodaj stronę źródłową", "x": 140, "y": 200 },
+    { "id": "cmd-2", "role": "command", "text": "Dodaj subskrybenta (formularz)", "x": 330, "y": 200 },
+    { "id": "cmd-3", "role": "command", "text": "Uruchom scrapowanie", "x": 620, "y": 200 },
+    { "id": "cmd-4", "role": "command", "text": "Pobierz tytuły i nagłówki", "x": 810, "y": 200 },
+    { "id": "cmd-5", "role": "command", "text": "Zapisz nowe artykuły", "x": 1190, "y": 200 },
+    { "id": "cmd-6", "role": "command", "text": "Uruchom wysyłkę", "x": 1380, "y": 200 },
+    { "id": "cmd-7", "role": "command", "text": "Wyślij listę i oznacz artykuły jako wysłane", "x": 1570, "y": 200 },
+    { "id": "cmd-8", "role": "command", "text": "Przejrzyj pobrane artykuły", "x": 1790, "y": 200 },
+
+    { "id": "evt-1", "role": "event", "text": "Strona źródłowa dodana do scrapowania", "x": 140, "y": 330 },
+    { "id": "evt-4", "role": "event", "text": "Subskrybent dodany przez administratora", "x": 330, "y": 330 },
+    { "id": "evt-7", "role": "event", "text": "Scrapowanie uruchomione wg harmonogramu (nad ranem)", "x": 620, "y": 330 },
+    { "id": "evt-2", "role": "event", "text": "Tytuły i nagłówki pobrane ze strony", "x": 810, "y": 330 },
+    { "id": "evt-9", "role": "event", "text": "Napotkano pobrany już artykuł — scrapowanie zatrzymane", "x": 1000, "y": 330 },
+    { "id": "evt-3", "role": "event", "text": "Nowe artykuły zapisane w bazie", "x": 1190, "y": 330 },
+    { "id": "evt-5", "role": "event", "text": "Dzienna wysyłka uruchomiona", "x": 1380, "y": 330 },
+    { "id": "evt-6", "role": "event", "text": "Lista ostatnich artykułów wysłana do subskrybentów", "x": 1570, "y": 330 },
+    { "id": "evt-11", "role": "event", "text": "Pobrane artykuły przejrzane w panelu admina", "x": 1790, "y": 330 },
+
+    { "id": "evt-8", "role": "event", "text": "Błąd scrapowania zapisany w logach", "x": 810, "y": 460 },
+    { "id": "evt-13", "role": "event", "text": "Scraper poprawiony ręcznie przez administratora", "x": 1000, "y": 460 },
+    { "id": "evt-12", "role": "event", "text": "Wysyłka pominięta (brak nowych artykułów)", "x": 1190, "y": 460 },
+    { "id": "evt-10", "role": "event", "text": "Wysyłka pominięta (błąd scrapowania)", "x": 1380, "y": 460 },
+    { "id": "cmd-9", "role": "command", "text": "Popraw kod scrapera", "x": 620, "y": 460 },
+
+    { "id": "rm-1", "role": "readmodel", "text": "Lista pobranych artykułów (panel admina)", "x": 1790, "y": 458 },
+    { "id": "rm-2", "role": "readmodel", "text": "Artykuły z flagą 'niewysłane' + lista subskrybentów", "x": 1570, "y": 458 },
+    { "id": "rm-3", "role": "readmodel", "text": "Lista subskrybentów (formularz admina)", "x": 330, "y": 458 },
+
+    { "id": "pol-1", "role": "policy", "text": "Gdy nadejdzie poranny harmonogram → uruchom scrapowanie", "x": 620, "y": 586 },
+    { "id": "pol-2", "role": "policy", "text": "Gdy napotkano znany artykuł → zatrzymaj scrapowanie", "x": 1000, "y": 586 },
+    { "id": "pol-3", "role": "policy", "text": "Gdy błąd scrapowania lub brak nowości → pomiń wysyłkę", "x": 1190, "y": 586 },
+    { "id": "pol-4", "role": "policy", "text": "Gdy scrapowanie udane i są nowe artykuły → uruchom wysyłkę", "x": 1380, "y": 586 },
+
+    { "id": "agg-1", "role": "aggregate", "text": "Artykuł (unikalny URL, flaga 'wysłany')", "x": 820, "y": 568 },
+    { "id": "agg-2", "role": "aggregate", "text": "Subskrybent (unikalny e-mail)", "x": 330, "y": 568 },
+    { "id": "agg-3", "role": "aggregate", "text": "Wysyłka dzienna (wyślij / pomiń)", "x": 1570, "y": 568 },
+
+    { "id": "ext-1", "role": "external", "text": "Strony źródłowe (HTML)", "x": 810, "y": 716 },
+    { "id": "ext-2", "role": "external", "text": "Resend (API e-mail)", "x": 1570, "y": 716 },
+
+    { "id": "lbl-5", "role": "label", "text": "po dniu z błędem mail obejmuje wszystko od ostatniej udanej wysyłki", "x": 1300, "y": 810, "fontSize": 13 },
+    { "id": "lbl-6", "role": "label", "text": "Admin jest też subskrybentem → brak porannego maila = sygnał błędu", "x": 700, "y": 810, "fontSize": 13 },
+    { "id": "lbl-8", "role": "label", "text": "częściowa awaria wysyłki: pominięci tracą maila z tego dnia (bez retry)", "x": 1750, "y": 810, "fontSize": 13 }
+  ]
+}
