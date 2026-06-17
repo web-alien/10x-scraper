@@ -1,0 +1,55 @@
+# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# Eval porównujący modele agenta code review (haiku 4.5 vs sonnet 4.6) na realnym kontrakcie review().
+# Pełni rolę regression gate przed zmianami promptu/schematu. Uruchom: `npm run eval`.
+description: AI Code Review — porównanie modeli (regression gate)
+
+# Sędzia dla llm-rubric idzie przez SDK (subskrypcja), nie przez domyślne OpenAI — bez OPENAI_API_KEY.
+defaultTest:
+  options:
+    provider: file://grader-provider.ts
+
+# Provider czyta vars.diff bezpośrednio; prompt jest placeholderem wymaganym przez promptfoo.
+prompts:
+  - "Zrecenzuj diff (provider czyta go z vars.diff)"
+
+providers:
+  - id: file://review-provider.ts
+    label: haiku-4.5
+    config:
+      model: claude-haiku-4-5
+  - id: file://review-provider.ts
+    label: sonnet-4.6
+    config:
+      model: claude-sonnet-4-6
+
+tests:
+  - description: Hardcoded token + injection w URL → fail
+    vars:
+      diff: file://fixtures/sql-and-secret.diff
+    assert:
+      - type: is-json
+      - type: javascript
+        value: JSON.parse(output).verdict === "fail"
+      - type: llm-rubric
+        value: Werdykt odrzuca zmianę i wskazuje konkretnie hardcoded token oraz sklejanie URL z niezaufanego inputu (injection)
+
+  - description: Migracja React 16 → 19 z błędami → fail
+    vars:
+      diff: file://fixtures/react-migration.diff
+    assert:
+      - type: is-json
+      - type: javascript
+        value: JSON.parse(output).verdict === "fail"
+      - type: llm-rubric
+        value: >-
+          Review wskazuje co najmniej dwa z trzech błędów migracji React 16→19:
+          dyrektywę "use client", przestarzałe ReactDOM.render (zamiast createRoot)
+          oraz defaultProps na komponencie funkcyjnym (usunięte w React 19)
+
+  - description: Czysta, idiomatyczna zmiana → pass
+    vars:
+      diff: file://fixtures/clean-change.diff
+    assert:
+      - type: is-json
+      - type: javascript
+        value: JSON.parse(output).verdict === "pass"

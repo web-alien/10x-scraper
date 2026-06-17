@@ -1,0 +1,63 @@
+name: AI Reviewer
+description: Recenzuje diff PR-a agentem Claude Agent SDK i zwraca werdykt pass/fail.
+
+inputs:
+  api-key:
+    description: >-
+      Klucz API Anthropic (pay-as-you-go). Mapowany na ANTHROPIC_API_KEY.
+      Opcjonalny — alternatywą jest oauth-token z subskrypcji. Podaj dokładnie jeden.
+    required: false
+    default: ""
+  oauth-token:
+    description: >-
+      Token z subskrypcji Claude (`claude setup-token`). Mapowany na CLAUDE_CODE_OAUTH_TOKEN.
+      Pozwala działać bez wykupowania osobnego API. Opcjonalny — alternatywa dla api-key.
+    required: false
+    default: ""
+  diff:
+    description: Diff PR-a do recenzji (git diff względem base).
+    required: true
+  pr-title:
+    description: Tytuł PR-a (kontekst dla agenta). Traktowany jak niezaufany input.
+    required: false
+    default: ""
+  pr-body:
+    description: Opis PR-a (kontekst dla agenta). Traktowany jak niezaufany input.
+    required: false
+    default: ""
+  model:
+    description: Model review (np. claude-haiku-4-5 / claude-sonnet-4-6).
+    required: false
+    default: claude-haiku-4-5
+
+outputs:
+  verdict:
+    description: Werdykt agenta (pass / fail).
+    value: ${{ steps.review.outputs.verdict }}
+
+runs:
+  using: composite
+  steps:
+    - id: review
+      shell: bash
+      # Inputy przekazujemy WYŁĄCZNIE przez env (nie przez ${{ }} w treści skryptu) — least trust,
+      # ochrona przed script-injection. Diff trafia do agenta przez stdin.
+      env:
+        INPUT_API_KEY: ${{ inputs.api-key }}
+        INPUT_OAUTH_TOKEN: ${{ inputs.oauth-token }}
+        REVIEW_DIFF: ${{ inputs.diff }}
+        PR_TITLE: ${{ inputs.pr-title }}
+        PR_BODY: ${{ inputs.pr-body }}
+        REVIEW_MODEL: ${{ inputs.model }}
+      run: |
+        # Ustawiamy tylko ten sekret, który faktycznie podano (pusty ANTHROPIC_API_KEY myli SDK).
+        if [ -n "$INPUT_API_KEY" ]; then
+          export ANTHROPIC_API_KEY="$INPUT_API_KEY"
+          export LLM_PROVIDER_API_KEY="$INPUT_API_KEY"
+        elif [ -n "$INPUT_OAUTH_TOKEN" ]; then
+          export CLAUDE_CODE_OAUTH_TOKEN="$INPUT_OAUTH_TOKEN"
+        else
+          echo "::error::Brak poświadczeń: ustaw sekret ANTHROPIC_API_KEY lub CLAUDE_CODE_OAUTH_TOKEN."
+          exit 1
+        fi
+        printf '%s' "$REVIEW_DIFF" | npx tsx "$GITHUB_WORKSPACE/scripts/review/review-ci.ts"

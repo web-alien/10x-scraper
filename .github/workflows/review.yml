@@ -1,0 +1,90 @@
+name: AI Code Review
+
+on:
+  pull_request:
+    branches: [master]
+    types: [opened, synchronize, reopened, labeled]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  review:
+    # Przy zdarzeniu `labeled` uruchamiaj tylko dla retry-labela ai-cr:review; pozostałe typy zawsze.
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.action != 'labeled' ||
+      github.event.label.name == 'ai-cr:review'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          fetch-depth: 0 # pełna historia — bez tego `git diff` względem base jest pusty
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+
+      - id: diff
+        name: Compute PR diff
+        shell: bash
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          BASE_REF="${BASE_REF:-master}"
+          git fetch --no-tags --depth=1 origin "$BASE_REF" || true
+          DIFF=$(git diff "origin/$BASE_REF...HEAD")
+          {
+            echo "diff<<DIFF_EOF"
+            echo "$DIFF"
+            echo "DIFF_EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - id: review
+        name: Run agent
+        uses: ./.github/actions/ai-reviewer
+        with:
+          # Podaj DOKŁADNIE JEDEN z sekretów w repo:
+          #  - ANTHROPIC_API_KEY      → pay-as-you-go (płatne API), albo
+          #  - CLAUDE_CODE_OAUTH_TOKEN → token z subskrypcji (`claude setup-token`), bez dokupowania API.
+          api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+          oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          diff: ${{ steps.diff.outputs.diff }}
+          pr-title: ${{ github.event.pull_request.title }}
+          pr-body: ${{ github.event.pull_request.body }}
+          # Wybrany na podstawie matrycy evala: tańszy i w teście czujniejszy niż sonnet.
+          model: claude-haiku-4-5
+
+      - name: Comment on PR
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file review-summary.md
+
+      - name: Apply verdict label
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          VERDICT: ${{ steps.review.outputs.verdict }}
+        run: |
+          gh label create "ai-cr:passed" --color 0E8A16 --description "AI review passed" --force >/dev/null 2>&1 || true
+          gh label create "ai-cr:failed" --color D93F0B --description "AI review failed" --force >/dev/null 2>&1 || true
+          if [ "$VERDICT" = "pass" ]; then
+            gh pr edit "$PR_NUMBER" --add-label "ai-cr:passed" --remove-label "ai-cr:failed"
+          else
+            gh pr edit "$PR_NUMBER" --add-label "ai-cr:failed" --remove-label "ai-cr:passed"
+          fi
+          # zdejmij retry-label, żeby dało się go dodać ponownie dla kolejnego przebiegu
+          gh pr edit "$PR_NUMBER" --remove-label "ai-cr:review" >/dev/null 2>&1 || true
+
+      - name: Enforce merge gate
+        if: steps.review.outputs.verdict == 'fail'
+        run: |
+          echo "::error::AI Code Review zwróciło verdict=fail — merge zablokowany."
+          exit 1
