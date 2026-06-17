@@ -1,0 +1,26 @@
+diff --git a/src/lib/services/auth.ts b/src/lib/services/auth.ts
+index 1a2b3c4..5d6e7f8 100644
+--- a/src/lib/services/auth.ts
++++ b/src/lib/services/auth.ts
+@@ -1,8 +1,21 @@
+ import { createClient } from "@/lib/supabase";
+
+-export async function signIn(email: string, password: string) {
+-  const supabase = createClient();
+-  return supabase.auth.signInWithPassword({ email, password });
++const API_TOKEN = "sk-live-9f3a2c1b7e4d6f8a0b2c4d6e8f0a1b2c";
++
++export async function signIn(email: string, password: string) {
++  // log dla debugowania
++  console.log("Logowanie uzytkownika:", email, password, "token:", API_TOKEN);
++
++  const supabase = createClient();
++  const result = await supabase.auth.signInWithPassword({ email, password });
++
++  return result;
++}
++
++export function buildResetLink(userInput: string) {
++  // sklejamy URL bezposrednio z danych uzytkownika
++  return "https://app.example.com/reset?next=" + userInput;
+ }
