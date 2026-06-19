@@ -95,3 +95,49 @@ describe("processSource", () => {
     expect(capturedRows.length).toBe(0);
   });
 });
+
+describe("processSource — title taken relative to each link", () => {
+  // Absolute selectors (as they arrive from the SOURCES_JSON secret in production).
+  const relativeSource: Source = {
+    name: "test-relative",
+    url: "https://example.com",
+    selectors: {
+      articleLink: ".block .link",
+      title: ".block .link h2",
+    },
+  };
+
+  beforeEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it("uses each link's own <h2> and stores null when a link has no title element", async () => {
+    // Middle link has no <h2>: with global .eq(index) pairing the titles desync and run out.
+    const html = `
+      <div class="block">
+        <a class="link" href="/a"><h2>Title A</h2></a>
+        <a class="link" href="/b"><img src="x.jpg" /></a>
+        <a class="link" href="/c"><h2>Title C</h2></a>
+      </div>`;
+    const capturedRows: unknown[] = [];
+    await processSource(html, relativeSource, makeMockSupabase(capturedRows) as unknown as SupabaseClient<Database>);
+
+    const rows = capturedRows as { article_url: string; title: string | null }[];
+    const byUrl = (suffix: string) => rows.find((r) => r.article_url.endsWith(suffix));
+    expect(byUrl("/a")?.title).toBe("Title A");
+    expect(byUrl("/b")?.title).toBeNull(); // no <h2> → null, NOT the next link's title
+    expect(byUrl("/c")?.title).toBe("Title C");
+  });
+
+  it("stores null (not empty string) for a whitespace-only title", async () => {
+    const html = `
+      <div class="block">
+        <a class="link" href="/ws"><h2>   </h2></a>
+      </div>`;
+    const capturedRows: unknown[] = [];
+    await processSource(html, relativeSource, makeMockSupabase(capturedRows) as unknown as SupabaseClient<Database>);
+
+    const rows = capturedRows as { title: string | null }[];
+    expect(rows[0]?.title).toBeNull();
+  });
+});

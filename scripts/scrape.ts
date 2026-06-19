@@ -22,6 +22,16 @@ const SourceConfigSchema = z.array(SourceSchema);
 export type Source = z.infer<typeof SourceSchema>;
 type SourceConfig = z.infer<typeof SourceConfigSchema>;
 
+/**
+ * Normalizuje selektor do formy relatywnej względem elementu linku.
+ * Selektory bywają absolutne (np. ".content--block .contentLink h2", tak przychodzą z sekretu
+ * SOURCES_JSON na produkcji). Jeśli zaczynają się od selektora linku, zdejmujemy ten prefix, by
+ * móc je wyszukać w obrębie konkretnego linku (`$(el).find(...)`) zamiast globalnie po stronie.
+ */
+export function relativeSelector(selector: string, articleLink: string): string {
+  return selector.startsWith(articleLink) ? selector.slice(articleLink.length).trim() : selector;
+}
+
 export async function processSource(
   html: string,
   source: Source,
@@ -30,15 +40,25 @@ export async function processSource(
   const $ = load(html);
   const linkElements = $(source.selectors.articleLink);
 
-  const articles: { source_url: string; article_url: string; title: string; lead: string }[] = [];
+  const articles: { source_url: string; article_url: string; title: string | null; lead: string | null }[] = [];
 
   linkElements.each((index, el) => {
-    const title = source.selectors.title ? $(source.selectors.title).eq(index).text().trim() : $(el).text().trim();
+    const $el = $(el);
+    // Tytuł/lead wyciągamy w obrębie KONKRETNEGO linku (nie globalnie po stronie), żeby uniknąć
+    // rozjechania indeksów, gdy część linków nie ma elementu tytułu. Brak tekstu → null (nie "").
+    const extract = (selector: string | undefined): string | null => {
+      if (!selector) return $el.text().trim() || null;
+      const rel = relativeSelector(selector, source.selectors.articleLink);
+      const scope = rel ? $el.find(rel) : $el;
+      return scope.first().text().trim() || null;
+    };
+
+    const title = extract(source.selectors.title);
     if (!title && source.selectors.title) {
       console.warn(`${source.name}: title selector matched nothing at index ${index}`);
     }
-    const rawHref = $(el).attr("href");
 
+    const rawHref = $el.attr("href");
     if (!rawHref) return;
 
     let article_url: string;
@@ -48,9 +68,9 @@ export async function processSource(
       return;
     }
 
-    let lead = "";
+    let lead: string | null = null;
     if (source.selectors.lead) {
-      lead = $(source.selectors.lead).eq(index).text().trim();
+      lead = extract(source.selectors.lead);
       if (!lead) {
         console.warn(`${source.name}: lead selector matched nothing at index ${index}`);
       }
