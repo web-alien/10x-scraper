@@ -229,13 +229,13 @@ consent. Local apply needs Docker + `npx supabase start`; prod needs `supabase l
 
 #### Manual
 
-- [ ] 2.3 `/dashboard/articles` locally: empty/whitespace titles show URL, none blank
+- [x] 2.3 `/dashboard/articles` locally: empty/whitespace titles show URL, none blank — baf3d56
 
 ### Phase 3: Backfill existing empty titles
 
 #### Automated
 
-- [x] 3.1 Migration file exists and is valid SQL
+- [x] 3.1 Migration file exists and is valid SQL — a1efdef
 
 #### Manual
 
