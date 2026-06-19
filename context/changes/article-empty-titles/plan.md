@@ -212,20 +212,20 @@ consent. Local apply needs Docker + `npx supabase start`; prod needs `supabase l
 
 #### Automated
 
-- [x] 1.1 Unit tests pass: `npm test` (tests added to `tests/scraper.test.ts` — vitest `include` is `tests/**`)
-- [x] 1.2 Lint passes: `npm run lint`
-- [x] 1.3 Type-check passes
+- [x] 1.1 Unit tests pass: `npm test` (tests added to `tests/scraper.test.ts` — vitest `include` is `tests/**`) — 0b3b2d2
+- [x] 1.2 Lint passes: `npm run lint` — 0b3b2d2
+- [x] 1.3 Type-check passes — 0b3b2d2
 
 #### Manual
 
-- [x] 1.4 Test asserts alignment + `null`-on-missing + no index desync
+- [x] 1.4 Test asserts alignment + `null`-on-missing + no index desync — 0b3b2d2
 
 ### Phase 2: Harden consumers against empty/whitespace titles
 
 #### Automated
 
-- [ ] 2.1 Lint passes: `npm run lint`
-- [ ] 2.2 Type-check passes
+- [x] 2.1 Lint passes: `npm run lint`
+- [x] 2.2 Type-check passes
 
 #### Manual
 

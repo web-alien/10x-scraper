@@ -55,7 +55,7 @@ export async function runDigest(
   for (const [hostname, group] of grouped) {
     html += `<h2>${esc(hostname)}</h2>`;
     for (const article of group) {
-      const titleText = esc(article.title ?? article.article_url);
+      const titleText = esc(article.title?.trim() ? article.title : article.article_url);
       html += `<p><strong><a href="${article.article_url}">${titleText}</a></strong></p>`;
       if (article.lead) {
         html += `<p>${esc(article.lead)}</p>`;

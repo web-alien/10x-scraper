@@ -100,7 +100,7 @@ export default function ArticlesTable({ articles }: Props) {
                     rel="noopener noreferrer"
                     className="hover:text-primary underline"
                   >
-                    {article.title ?? article.article_url}
+                    {article.title?.trim() ? article.title : article.article_url}
                   </a>
                 </TableCell>
                 <TableCell>{sourceHostname(article.source_url)}</TableCell>
