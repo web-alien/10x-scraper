@@ -224,8 +224,8 @@ consent. Local apply needs Docker + `npx supabase start`; prod needs `supabase l
 
 #### Automated
 
-- [x] 2.1 Lint passes: `npm run lint`
-- [x] 2.2 Type-check passes
+- [x] 2.1 Lint passes: `npm run lint` — baf3d56
+- [x] 2.2 Type-check passes — baf3d56
 
 #### Manual
 
@@ -235,7 +235,7 @@ consent. Local apply needs Docker + `npx supabase start`; prod needs `supabase l
 
 #### Automated
 
-- [ ] 3.1 Migration file exists and is valid SQL
+- [x] 3.1 Migration file exists and is valid SQL
 
 #### Manual
 
