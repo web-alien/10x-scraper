@@ -239,5 +239,5 @@ consent. Local apply needs Docker + `npx supabase start`; prod needs `supabase l
 
 #### Manual
 
-- [ ] 3.2 Applied to DB with consent; `count(*) WHERE title=''` = 0
-- [ ] 3.3 `/dashboard/articles` shows no blank rows for previously-empty titles
+- [x] 3.2 Applied to DB with consent; `count(*) WHERE title=''` = 0 — applied via `supabase db push` (20260619140237)
+- [x] 3.3 `/dashboard/articles` shows no blank rows for previously-empty titles — verified on prod (deploy b33c48f1)

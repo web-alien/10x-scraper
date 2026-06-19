@@ -1,7 +1,7 @@
 ---
 change_id: article-empty-titles
 title: Fix empty article titles (scraper title-link pairing + null convention)
-status: implementing
+status: implemented
 created: 2026-06-19
 updated: 2026-06-19
 archived_at: null
