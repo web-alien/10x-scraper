@@ -1,7 +1,7 @@
 ---
 change_id: scraper-card-extraction
 title: Fix scraper regression — extract title/lead from the article card (.content--block)
-status: implemented
+status: impl_reviewed
 created: 2026-06-20
 updated: 2026-06-20
 archived_at: null
