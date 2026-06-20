@@ -123,10 +123,10 @@ dry-run and prod re-check happen in `/verify`; rollout (build/deploy/merge) is s
 
 #### Automated
 
-- [x] 1.1 Unit tests pass: `npm test`
-- [x] 1.2 Lint passes: `npm run lint`
-- [x] 1.3 Type-check passes: `npx tsc --noEmit`
+- [x] 1.1 Unit tests pass: `npm test` — efbf979
+- [x] 1.2 Lint passes: `npm run lint` — efbf979
+- [x] 1.3 Type-check passes: `npx tsc --noEmit` — efbf979
 
 #### Manual
 
-- [x] 1.4 Test fails pre-fix (null), passes post-fix (correct title+lead from card)
+- [x] 1.4 Test fails pre-fix (null), passes post-fix (correct title+lead from card) — efbf979
