@@ -22,3 +22,10 @@
 - **Problem**: When INSERT/UPDATE/DELETE are intentionally absent from RLS policies (because service_role bypasses RLS), future developers reading the migration in Supabase dashboard or the SQL file may think the policies were forgotten rather than deliberately omitted.
 - **Rule**: [fill in — e.g. "Always add a SQL comment block above the policy list stating which operations are service_role-only and why, e.g. 'service_role pomija RLS — INSERT/UPDATE/DELETE are write-path only'."]
 - **Applies to**: [fill in — e.g. "supabase migrations, RLS policy design"]
+
+## Scraper fixtures must mirror the real page DOM
+
+- **Context**: Logika ekstrakcji scrapera (scripts/scrape.ts) i jej testy (tests/scraper.test.ts) — każda zmiana w tym, jak z selektorów wyciągane są tytuł/lead/linki ze strony źródłowej.
+- **Problem**: Test z fixturem zbudowanym na założeniach (`<a><h2>…</h2></a>`) przeszedł na zielono, podczas gdy produkcyjny scrape zapisał WSZYSTKIE title/lead jako NULL — realny parkiet.com ma tytuł/lead na poziomie karty i dwa linki o tym samym URL na artykuł. Fałszywe „zielone" wypuściło regresję na produkcję.
+- **Rule**: Przed zmianą ekstrakcji scrapera pobierz i obejrzyj REALNY DOM strony (fetch + inspekcja na żywo), a fixture testowy zbuduj tak, by go odwzorowywał — łącznie z kwirkami (wiele linków na element, pola na kontenerze-rodzicu). Nigdy nie asercjonuj przeciw hipotetycznemu DOM.
+- **Applies to**: plan, implement, impl-review

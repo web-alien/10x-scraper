@@ -96,14 +96,17 @@ describe("processSource", () => {
   });
 });
 
-describe("processSource — title taken relative to each link", () => {
-  // Absolute selectors (as they arrive from the SOURCES_JSON secret in production).
-  const relativeSource: Source = {
-    name: "test-relative",
+describe("processSource — title/lead taken from the article card", () => {
+  // Mirrors the REAL parkiet.com structure: each `.content--block` card has ONE <h2> and ONE
+  // `.teaser--lead` at card level, plus TWO `.contentLink` anchors with the SAME href — an image
+  // link without an <h2>, and the title link wrapping the <h2>. Title/lead are NOT inside the link.
+  const cardSource: Source = {
+    name: "test-cards",
     url: "https://example.com",
     selectors: {
-      articleLink: ".block .link",
-      title: ".block .link h2",
+      articleLink: ".content--block .contentLink",
+      title: ".content--block .contentLink h2",
+      lead: ".content--block .teaser--lead",
     },
   };
 
@@ -111,33 +114,40 @@ describe("processSource — title taken relative to each link", () => {
     vi.restoreAllMocks();
   });
 
-  it("uses each link's own <h2> and stores null when a link has no title element", async () => {
-    // Middle link has no <h2>: with global .eq(index) pairing the titles desync and run out.
+  it("takes each card's own title and lead (card-level, not from inside the link)", async () => {
     const html = `
-      <div class="block">
-        <a class="link" href="/a"><h2>Title A</h2></a>
-        <a class="link" href="/b"><img src="x.jpg" /></a>
-        <a class="link" href="/c"><h2>Title C</h2></a>
+      <div class="content--block">
+        <a class="contentLink" href="/art1"><img src="1.jpg" /></a>
+        <a class="contentLink" href="/art1"><h2>Tytuł pierwszy</h2></a>
+        <p class="teaser--lead">Lead pierwszy</p>
+      </div>
+      <div class="content--block">
+        <a class="contentLink" href="/art2"><img src="2.jpg" /></a>
+        <a class="contentLink" href="/art2"><h2>Tytuł drugi</h2></a>
+        <p class="teaser--lead">Lead drugi</p>
       </div>`;
     const capturedRows: unknown[] = [];
-    await processSource(html, relativeSource, makeMockSupabase(capturedRows) as unknown as SupabaseClient<Database>);
+    await processSource(html, cardSource, makeMockSupabase(capturedRows) as unknown as SupabaseClient<Database>);
 
-    const rows = capturedRows as { article_url: string; title: string | null }[];
+    const rows = capturedRows as { article_url: string; title: string | null; lead: string | null }[];
     const byUrl = (suffix: string) => rows.find((r) => r.article_url.endsWith(suffix));
-    expect(byUrl("/a")?.title).toBe("Title A");
-    expect(byUrl("/b")?.title).toBeNull(); // no <h2> → null, NOT the next link's title
-    expect(byUrl("/c")?.title).toBe("Title C");
+    // Each card gets ITS OWN title+lead — no index desync, no null from the thumbnail link.
+    expect(byUrl("/art1")?.title).toBe("Tytuł pierwszy");
+    expect(byUrl("/art1")?.lead).toBe("Lead pierwszy");
+    expect(byUrl("/art2")?.title).toBe("Tytuł drugi");
+    expect(byUrl("/art2")?.lead).toBe("Lead drugi");
   });
 
-  it("stores null (not empty string) for a whitespace-only title", async () => {
+  it("stores null lead when the card has no lead element", async () => {
     const html = `
-      <div class="block">
-        <a class="link" href="/ws"><h2>   </h2></a>
+      <div class="content--block">
+        <a class="contentLink" href="/nolead"><h2>Tytuł bez leadu</h2></a>
       </div>`;
     const capturedRows: unknown[] = [];
-    await processSource(html, relativeSource, makeMockSupabase(capturedRows) as unknown as SupabaseClient<Database>);
+    await processSource(html, cardSource, makeMockSupabase(capturedRows) as unknown as SupabaseClient<Database>);
 
-    const rows = capturedRows as { title: string | null }[];
-    expect(rows[0]?.title).toBeNull();
+    const rows = capturedRows as { title: string | null; lead: string | null }[];
+    expect(rows[0]?.title).toBe("Tytuł bez leadu");
+    expect(rows[0]?.lead).toBeNull();
   });
 });
