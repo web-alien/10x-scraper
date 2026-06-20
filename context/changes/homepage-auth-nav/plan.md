@@ -205,35 +205,35 @@ Polonize the remaining user-facing English so the UI is consistently Polish: the
 
 #### Automated
 
-- [x] 1.1 Linting passes: `npm run lint`
+- [x] 1.1 Linting passes: `npm run lint` — 8c8f51c
 
 #### Manual
 
-- [x] 1.2 Signed-out `/` shows "Zaloguj" + "Zarejestruj"
-- [x] 1.3 Signed-in `/` shows "Panel" + "Wyloguj"; login/register buttons gone
-- [x] 1.4 "Panel" navigates to `/dashboard`; "Wyloguj" logs out
+- [x] 1.2 Signed-out `/` shows "Zaloguj" + "Zarejestruj" — 8c8f51c
+- [x] 1.3 Signed-in `/` shows "Panel" + "Wyloguj"; login/register buttons gone — 8c8f51c
+- [x] 1.4 "Panel" navigates to `/dashboard`; "Wyloguj" logs out — 8c8f51c
 
 ### Phase 2: Polonize Dashboard/Sign out labels (topbar + dashboard pages)
 
 #### Automated
 
-- [x] 2.1 Linting passes: `npm run lint`
+- [x] 2.1 Linting passes: `npm run lint` — 8c8f51c
 
 #### Manual
 
-- [x] 2.2 Signed-in topbar reads "Panel" and "Wyloguj"; email visible
-- [x] 2.3 Signed-out topbar reads "Niezalogowany"; auth links work
-- [x] 2.4 `/dashboard` shows heading "Panel" + "Wyloguj" button; tab title "Panel"
-- [x] 2.5 `/dashboard/articles` back link reads "← Panel" and returns to dashboard
+- [x] 2.2 Signed-in topbar reads "Panel" and "Wyloguj"; email visible — 8c8f51c
+- [x] 2.3 Signed-out topbar reads "Niezalogowany"; auth links work — 8c8f51c
+- [x] 2.4 `/dashboard` shows heading "Panel" + "Wyloguj" button; tab title "Panel" — 8c8f51c
+- [x] 2.5 `/dashboard/articles` back link reads "← Panel" and returns to dashboard — 8c8f51c
 
 ### Phase 3: Polonize dashboard copy & auth form strings
 
 #### Automated
 
-- [x] 3.1 Linting passes: `npm run lint`
+- [x] 3.1 Linting passes: `npm run lint` — 8c8f51c
 
 #### Manual
 
-- [x] 3.2 `/dashboard` welcome/help copy reads in Polish
-- [x] 3.3 Sign-in & sign-up forms fully Polish (labels, placeholders, errors, buttons, toggle aria-label)
-- [x] 3.4 Forgot/reset validation messages Polish; password hint pluralizes correctly
+- [x] 3.2 `/dashboard` welcome/help copy reads in Polish — 8c8f51c
+- [x] 3.3 Sign-in & sign-up forms fully Polish (labels, placeholders, errors, buttons, toggle aria-label) — 8c8f51c
+- [x] 3.4 Forgot/reset validation messages Polish; password hint pluralizes correctly — 8c8f51c
