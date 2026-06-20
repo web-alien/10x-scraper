@@ -1,7 +1,7 @@
 ---
 change_id: homepage-auth-nav
 title: Homepage hero and topbar reflect auth state, in Polish
-status: implemented
+status: impl_reviewed
 created: 2026-06-20
 updated: 2026-06-20
 archived_at: null
