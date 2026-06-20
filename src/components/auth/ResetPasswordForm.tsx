@@ -21,14 +21,14 @@ export default function ResetPasswordForm({ serverError }: Props) {
   function validate() {
     const next: typeof errors = {};
     if (!password) {
-      next.password = "Password is required";
+      next.password = "Hasło jest wymagane";
     } else if (password.length < MIN_PASSWORD_LENGTH) {
-      next.password = `Password must be at least ${MIN_PASSWORD_LENGTH} characters`;
+      next.password = `Hasło musi mieć co najmniej ${MIN_PASSWORD_LENGTH} znaków`;
     }
     if (!confirmPassword) {
-      next.confirmPassword = "Please confirm your password";
+      next.confirmPassword = "Potwierdź hasło";
     } else if (password !== confirmPassword) {
-      next.confirmPassword = "Passwords do not match";
+      next.confirmPassword = "Hasła nie są zgodne";
     }
     setErrors(next);
     return Object.keys(next).length === 0;
@@ -47,8 +47,8 @@ export default function ResetPasswordForm({ serverError }: Props) {
   const passwordHint =
     !errors.password && password.length > 0 && password.length < MIN_PASSWORD_LENGTH ? (
       <p className="mt-1 text-xs text-blue-100/50">
-        {MIN_PASSWORD_LENGTH - password.length} more character
-        {MIN_PASSWORD_LENGTH - password.length !== 1 ? "s" : ""} needed
+        Brakuje jeszcze {MIN_PASSWORD_LENGTH - password.length}{" "}
+        {MIN_PASSWORD_LENGTH - password.length === 1 ? "znaku" : "znaków"}
       </p>
     ) : undefined;
 
