@@ -44,6 +44,33 @@ export type Database = {
         }
         Relationships: []
       }
+      mailing_recipients: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          name: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          name?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
