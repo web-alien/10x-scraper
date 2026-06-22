@@ -192,9 +192,9 @@ Odwrót: przywrócenie odczytu pliku w bloku startowym + kroku CI.
 
 #### Automated
 
-- [x] 2.1 Brak odwołań do `subscribers.json` w `.github/` (poza komentarzem) (`git grep`)
+- [x] 2.1 Brak odwołań do `subscribers.json` w `.github/` (poza komentarzem) (`git grep`) — b134cdb
 
 #### Manual
 
-- [ ] 2.2 Ręczne uruchomienie workflow kończy się sukcesem i wysyła do odbiorców z tabeli
-- [ ] 2.3 Sekret `SUBSCRIBERS_JSON` usunięty z ustawień GitHub
+- [x] 2.2 Ręczne uruchomienie workflow kończy się sukcesem i wysyła do odbiorców z tabeli — b134cdb
+- [x] 2.3 Sekret `SUBSCRIBERS_JSON` usunięty z ustawień GitHub — b134cdb
