@@ -393,8 +393,8 @@ kodu. Twarde usuwanie jest nieodwracalne — brak ścieżki rollbacku danych.
 
 #### Automated
 
-- [x] 3.1 Lint + type-check przechodzą (`npm run lint`)
-- [x] 3.2 (Jeśli dodane) testy endpointów przechodzą (`npm run test`)
+- [x] 3.1 Lint + type-check przechodzą (`npm run lint`) — 51c20a3
+- [x] 3.2 (Jeśli dodane) testy endpointów przechodzą (`npm run test`) — 51c20a3
 
 #### Manual
 
@@ -405,12 +405,12 @@ kodu. Twarde usuwanie jest nieodwracalne — brak ścieżki rollbacku danych.
 
 #### Automated
 
-- [ ] 4.1 Lint przechodzi (`npm run lint`)
-- [ ] 4.2 Pliki `src/components/ui/{input,label,dialog}.tsx` istnieją
+- [x] 4.1 Lint przechodzi (`npm run lint`)
+- [x] 4.2 Pliki `src/components/ui/{input,label,dialog}.tsx` istnieją
 
 #### Manual
 
-- [ ] 4.3 Komponenty importują się bez błędów
+- [x] 4.3 Komponenty importują się bez błędów
 
 ### Phase 5: Komponenty React (wyspy)
 
