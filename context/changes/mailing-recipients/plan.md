@@ -398,8 +398,8 @@ kodu. Twarde usuwanie jest nieodwracalne — brak ścieżki rollbacku danych.
 
 #### Manual
 
-- [x] 3.3 `POST` z duplikatem emaila zwraca 409, nie 500
-- [x] 3.4 Wywołania bez sesji zwracają 401
+- [x] 3.3 `POST` z duplikatem emaila zwraca 409, nie 500 — 5432b2e
+- [x] 3.4 Wywołania bez sesji zwracają 401 — 5432b2e
 
 ### Phase 4: Komponenty UI (shadcn)
 
@@ -420,18 +420,18 @@ kodu. Twarde usuwanie jest nieodwracalne — brak ścieżki rollbacku danych.
 
 #### Manual
 
-- [x] 5.2 Dodanie / edycja / usunięcie działa w UI i odświeża listę
-- [x] 5.3 Walidacja klienta blokuje pusty/niepoprawny email
+- [x] 5.2 Dodanie / edycja / usunięcie działa w UI i odświeża listę — 5432b2e
+- [x] 5.3 Walidacja klienta blokuje pusty/niepoprawny email — 5432b2e
 
 ### Phase 6: Strona Astro + nawigacja
 
 #### Automated
 
-- [x] 6.1 Build przechodzi (`npm run build`)
-- [x] 6.2 Lint przechodzi (`npm run lint`)
+- [x] 6.1 Build przechodzi (`npm run build`) — 5432b2e
+- [x] 6.2 Lint przechodzi (`npm run lint`) — 5432b2e
 
 #### Manual
 
-- [x] 6.3 Panel → „Odbiorcy" otwiera stronę z tabelą
-- [x] 6.4 Niezalogowany na `/dashboard/recipients` → redirect `/auth/signin`
-- [x] 6.5 Pełny obieg CRUD działa end-to-end na realnej bazie (RLS dla `authenticated`)
+- [x] 6.3 Panel → „Odbiorcy" otwiera stronę z tabelą — 5432b2e
+- [x] 6.4 Niezalogowany na `/dashboard/recipients` → redirect `/auth/signin` — 5432b2e
+- [x] 6.5 Pełny obieg CRUD działa end-to-end na realnej bazie (RLS dla `authenticated`) — 5432b2e
