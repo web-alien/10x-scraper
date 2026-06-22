@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Database } from "@/types/supabase";
 import type { Resend } from "resend";
-import { runDigest } from "../scripts/send.ts";
+import { runDigest, fetchActiveRecipientEmails } from "../scripts/send.ts";
 import type { Article } from "../scripts/send.ts";
 
 const articles: Article[] = [
@@ -63,5 +63,32 @@ describe("runDigest", () => {
     );
 
     expect(failedCount).toBe(0);
+  });
+});
+
+function makeRecipientsClient(data: { email: string }[] | null, error: { message: string } | null = null) {
+  return {
+    from: () => ({
+      select: () => ({
+        eq: () => Promise.resolve({ data, error }),
+      }),
+    }),
+  } as unknown as SupabaseClient<Database>;
+}
+
+describe("fetchActiveRecipientEmails", () => {
+  it("returns emails of active recipients", async () => {
+    const supabase = makeRecipientsClient([{ email: "a@example.com" }, { email: "b@example.com" }]);
+    await expect(fetchActiveRecipientEmails(supabase)).resolves.toEqual(["a@example.com", "b@example.com"]);
+  });
+
+  it("returns an empty array when no active recipients", async () => {
+    const supabase = makeRecipientsClient([]);
+    await expect(fetchActiveRecipientEmails(supabase)).resolves.toEqual([]);
+  });
+
+  it("throws when the query errors", async () => {
+    const supabase = makeRecipientsClient(null, { message: "db down" });
+    await expect(fetchActiveRecipientEmails(supabase)).rejects.toThrow("db down");
   });
 });
