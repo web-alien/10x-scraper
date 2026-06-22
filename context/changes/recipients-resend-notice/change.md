@@ -1,7 +1,7 @@
 ---
 change_id: recipients-resend-notice
 title: Baner o ograniczeniu darmowego Resend na stronie odbiorców
-status: implementing
+status: implemented
 created: 2026-06-22
 updated: 2026-06-22
 archived_at: null

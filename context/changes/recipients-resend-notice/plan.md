@@ -95,9 +95,9 @@ potwierdzenie manualne.
 
 #### Automated
 
-- [x] 1.1 Build przechodzi (`npm run build`)
-- [x] 1.2 Lint przechodzi (`npm run lint`)
+- [x] 1.1 Build przechodzi (`npm run build`) — 1d9f3e4
+- [x] 1.2 Lint przechodzi (`npm run lint`) — 1d9f3e4
 
 #### Manual
 
-- [x] 1.3 Żółty baner z komunikatem widoczny nad tabelą po zalogowaniu
+- [x] 1.3 Żółty baner z komunikatem widoczny nad tabelą po zalogowaniu — 1d9f3e4
