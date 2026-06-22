@@ -31,5 +31,5 @@ export async function updateRecipient(supabase: SupabaseClient, id: string, data
 }
 
 export async function deleteRecipient(supabase: SupabaseClient, id: string) {
-  return supabase.from("mailing_recipients").delete().eq("id", id);
+  return supabase.from("mailing_recipients").delete().eq("id", id).select("id");
 }

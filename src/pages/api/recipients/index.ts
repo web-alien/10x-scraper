@@ -1,13 +1,11 @@
 import type { APIRoute } from "astro";
 
 import { createClient } from "@/lib/supabase";
+import { json } from "@/lib/http";
 import { recipientSchema } from "@/lib/validators/recipient";
 import { createRecipient, fetchRecipients } from "@/lib/services/recipients";
 
 export const prerender = false;
-
-const json = (data: unknown, status = 200) =>
-  new Response(JSON.stringify(data), { status, headers: { "Content-Type": "application/json" } });
 
 export const GET: APIRoute = async (context) => {
   if (!context.locals.user) return json({ error: "Unauthorized" }, 401);

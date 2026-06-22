@@ -1,13 +1,11 @@
 import type { APIRoute } from "astro";
 
 import { createClient } from "@/lib/supabase";
+import { json } from "@/lib/http";
 import { recipientSchema } from "@/lib/validators/recipient";
 import { deleteRecipient, updateRecipient } from "@/lib/services/recipients";
 
 export const prerender = false;
-
-const json = (data: unknown, status = 200) =>
-  new Response(JSON.stringify(data), { status, headers: { "Content-Type": "application/json" } });
 
 export const PUT: APIRoute = async (context) => {
   if (!context.locals.user) return json({ error: "Unauthorized" }, 401);
@@ -47,8 +45,9 @@ export const DELETE: APIRoute = async (context) => {
   const id = context.params.id;
   if (!id) return json({ error: "Missing id" }, 400);
 
-  const { error } = await deleteRecipient(supabase, id);
+  const { data, error } = await deleteRecipient(supabase, id);
   if (error) return json({ error: error.message }, 500);
+  if (data.length === 0) return json({ error: "Nie znaleziono odbiorcy" }, 404);
 
   return json({ success: true });
 };
