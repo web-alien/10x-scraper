@@ -370,24 +370,24 @@ kodu. Twarde usuwanie jest nieodwracalne — brak ścieżki rollbacku danych.
 
 #### Automated
 
-- [x] 1.1 Migracja aplikuje się czysto na lokalnej bazie
-- [x] 1.2 Type-check przechodzi po regeneracji (`npm run lint`)
+- [x] 1.1 Migracja aplikuje się czysto na lokalnej bazie — 0666ecc
+- [x] 1.2 Type-check przechodzi po regeneracji (`npm run lint`) — 0666ecc
 
 #### Manual
 
-- [x] 1.3 W Studio tabela `mailing_recipients` ma 4 polityki RLS
-- [x] 1.4 `Tables<"mailing_recipients">` rozwiązuje się w TS
+- [x] 1.3 W Studio tabela `mailing_recipients` ma 4 polityki RLS — 0666ecc
+- [x] 1.4 `Tables<"mailing_recipients">` rozwiązuje się w TS — 0666ecc
 
 ### Phase 2: Walidacja (zod) + serwis danych
 
 #### Automated
 
-- [ ] 2.1 Testy jednostkowe walidatora przechodzą (`npm run test`)
-- [ ] 2.2 Type-check + lint przechodzą (`npm run lint`)
+- [x] 2.1 Testy jednostkowe walidatora przechodzą (`npm run test`)
+- [x] 2.2 Type-check + lint przechodzą (`npm run lint`)
 
 #### Manual
 
-- [ ] 2.3 Walidator odrzuca pusty/niepoprawny email i nieznany status
+- [x] 2.3 Walidator odrzuca pusty/niepoprawny email i nieznany status
 
 ### Phase 3: API routes (JSON)
 
