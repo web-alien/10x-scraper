@@ -41,6 +41,11 @@ if (!supabase) {
         </h1>
       </div>
 
+      <Banner variant="warning">
+        Ze względu na ograniczenia darmowej wersji resend.com, nie ma teraz możliwości wysyłki mailingów na więcej niż 1
+        zdefiniowany adres.
+      </Banner>
+
       {fetchError && <Banner variant="error">{fetchError}</Banner>}
 
       <div class="rounded-2xl border border-white/10 bg-white/10 backdrop-blur-xl">
