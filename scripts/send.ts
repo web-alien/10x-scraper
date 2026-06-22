@@ -1,14 +1,19 @@
 import "dotenv/config";
-import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { createScriptClient } from "@/lib/supabase-script";
 import { Resend } from "resend";
-import { z } from "zod";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Database } from "@/types/supabase";
 
-const SubscribersSchema = z.array(z.email());
-type Subscribers = z.infer<typeof SubscribersSchema>;
+// Odbiorcy mailingu pochodzą z tabeli mailing_recipients (zarządzanej z panelu),
+// nie z subscribers.json. Bierzemy tylko aktywnych.
+export async function fetchActiveRecipientEmails(supabase: SupabaseClient<Database>): Promise<string[]> {
+  const { data, error } = await supabase.from("mailing_recipients").select("email").eq("status", "active");
+  if (error) {
+    throw new Error(error.message);
+  }
+  return data.map((row) => row.email);
+}
 
 export interface Article {
   id: string;
@@ -107,15 +112,6 @@ if (process.argv[1] === __filename) {
     process.exit(1);
   }
 
-  let subscribers: Subscribers;
-  try {
-    const raw = readFileSync("subscribers.json", "utf-8");
-    subscribers = SubscribersSchema.parse(JSON.parse(raw));
-  } catch (err) {
-    console.error("Error loading subscribers.json:", err instanceof Error ? err.message : String(err));
-    process.exit(1);
-  }
-
   const supabase = createScriptClient(supabaseUrl, supabaseServiceRoleKey);
   const resend = new Resend(resendApiKey);
 
@@ -138,6 +134,19 @@ if (process.argv[1] === __filename) {
 
   if (articles.length === 0) {
     console.log("Brak nowych artykułów w ostatnich 24h, pomijam wysyłkę.");
+    process.exit(0);
+  }
+
+  let subscribers: string[];
+  try {
+    subscribers = await fetchActiveRecipientEmails(supabase);
+  } catch (err) {
+    console.error("Error loading recipients:", err instanceof Error ? err.message : String(err));
+    process.exit(1);
+  }
+
+  if (subscribers.length === 0) {
+    console.log("Brak aktywnych odbiorców w tabeli, pomijam wysyłkę.");
     process.exit(0);
   }
 
