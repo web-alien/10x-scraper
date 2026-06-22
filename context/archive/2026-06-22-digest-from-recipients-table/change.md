@@ -1,10 +1,10 @@
 ---
 change_id: digest-from-recipients-table
 title: Codzienny digest czyta odbiorców z tabeli mailing_recipients zamiast subscribers.json
-status: implemented
+status: archived
 created: 2026-06-22
 updated: 2026-06-22
-archived_at: null
+archived_at: 2026-06-22T11:17:40Z
 ---
 
 ## Notes
