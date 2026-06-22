@@ -382,19 +382,19 @@ kodu. Twarde usuwanie jest nieodwracalne — brak ścieżki rollbacku danych.
 
 #### Automated
 
-- [x] 2.1 Testy jednostkowe walidatora przechodzą (`npm run test`)
-- [x] 2.2 Type-check + lint przechodzą (`npm run lint`)
+- [x] 2.1 Testy jednostkowe walidatora przechodzą (`npm run test`) — 857dc04
+- [x] 2.2 Type-check + lint przechodzą (`npm run lint`) — 857dc04
 
 #### Manual
 
-- [x] 2.3 Walidator odrzuca pusty/niepoprawny email i nieznany status
+- [x] 2.3 Walidator odrzuca pusty/niepoprawny email i nieznany status — 857dc04
 
 ### Phase 3: API routes (JSON)
 
 #### Automated
 
-- [ ] 3.1 Lint + type-check przechodzą (`npm run lint`)
-- [ ] 3.2 (Jeśli dodane) testy endpointów przechodzą (`npm run test`)
+- [x] 3.1 Lint + type-check przechodzą (`npm run lint`)
+- [x] 3.2 (Jeśli dodane) testy endpointów przechodzą (`npm run test`)
 
 #### Manual
 
