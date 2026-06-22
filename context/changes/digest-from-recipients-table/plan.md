@@ -180,19 +180,19 @@ Odwrót: przywrócenie odczytu pliku w bloku startowym + kroku CI.
 
 #### Automated
 
-- [x] 1.1 Testy przechodzą (stare + nowe) (`npm run test`)
-- [x] 1.2 Lint + type-check (`npm run lint`)
+- [x] 1.1 Testy przechodzą (stare + nowe) (`npm run test`) — 8a7ea84
+- [x] 1.2 Lint + type-check (`npm run lint`) — 8a7ea84
 
 #### Manual
 
-- [x] 1.3 `npm run send` wysyła do aktywnego odbiorcy z tabeli i loguje ich liczbę
-- [x] 1.4 Zero aktywnych → log „brak odbiorców" + exit 0, brak wysyłki
+- [x] 1.3 `npm run send` wysyła do aktywnego odbiorcy z tabeli i loguje ich liczbę — 8a7ea84
+- [x] 1.4 Zero aktywnych → log „brak odbiorców" + exit 0, brak wysyłki — 8a7ea84
 
 ### Phase 2: Sprzątanie CI
 
 #### Automated
 
-- [ ] 2.1 Brak odwołań do `subscribers.json` w `.github/` (poza komentarzem) (`git grep`)
+- [x] 2.1 Brak odwołań do `subscribers.json` w `.github/` (poza komentarzem) (`git grep`)
 
 #### Manual
 

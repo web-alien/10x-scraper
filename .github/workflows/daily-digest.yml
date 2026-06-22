@@ -16,7 +16,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: echo '${{ secrets.SOURCES_JSON }}' > sources.json
-      - run: echo '${{ secrets.SUBSCRIBERS_JSON }}' > subscribers.json
+      # Odbiorcy mailingu pochodzą z tabeli mailing_recipients (panel /dashboard/recipients).
+      # Sekret SUBSCRIBERS_JSON jest nieużywany — do usunięcia ręcznie w ustawieniach repo.
       - run: npm run scrape && npm run send
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
