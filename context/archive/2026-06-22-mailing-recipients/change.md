@@ -1,10 +1,10 @@
 ---
 change_id: mailing-recipients
 title: Strona CRUD w panelu do zarządzania listą odbiorców mailingu
-status: impl_reviewed
+status: archived
 created: 2026-06-22
 updated: 2026-06-22
-archived_at: null
+archived_at: 2026-06-22T11:15:30Z
 ---
 
 ## Notes
