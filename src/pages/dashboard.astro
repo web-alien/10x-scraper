@@ -14,12 +14,20 @@ const { user } = Astro.locals;
         Witaj, <span class="font-semibold text-white">{user?.email}</span>
       </p>
       <p class="mt-2 text-sm text-blue-100/50">Ta strona jest dostępna tylko dla zalogowanych użytkowników.</p>
-      <a
-        href="/dashboard/articles"
-        class="mt-4 inline-block rounded-lg border border-white/20 bg-white/10 px-4 py-2 text-sm transition-colors hover:bg-white/20"
-      >
-        Artykuły
-      </a>
+      <div class="mt-4 flex justify-center gap-3">
+        <a
+          href="/dashboard/articles"
+          class="inline-block rounded-lg border border-white/20 bg-white/10 px-4 py-2 text-sm transition-colors hover:bg-white/20"
+        >
+          Artykuły
+        </a>
+        <a
+          href="/dashboard/recipients"
+          class="inline-block rounded-lg border border-white/20 bg-white/10 px-4 py-2 text-sm transition-colors hover:bg-white/20"
+        >
+          Odbiorcy
+        </a>
+      </div>
       <form method="POST" action="/api/auth/signout" class="mt-6">
         <button
           type="submit"
